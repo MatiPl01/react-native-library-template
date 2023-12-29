@@ -1,3 +1,4 @@
 {
-  "name": "example-app"
+  "name": "example-app",
+  "react-native": "index.ts"
 }
