@@ -1,0 +1,17 @@
+{
+  "extends": "react-native-matipl01",
+  "parserOptions": {
+    "project": ["./tsconfig.json", "./example/tsconfig.json"]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": ["./tsconfig.json", "./example/tsconfig.json"]
+      }
+    }
+  },
+  "rules": {
+    "no-relative-import-paths/no-relative-import-paths": "off"
+  }
+}

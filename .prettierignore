@@ -1,0 +1,8 @@
+.gitignore
+Gemfile
+yarn.lock
+
+.vscode/**
+android/**
+ios/**
+node_modules/**
