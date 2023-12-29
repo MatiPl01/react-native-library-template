@@ -1,14 +1,14 @@
 module.exports = {
-  source: "src",
-  output: "dist",
+  source: 'src',
+  output: 'dist',
   targets: [
-    "commonjs",
-    "module",
+    'commonjs',
+    'module',
     [
-      "typescript",
+      'typescript',
       {
-        project: "tsconfig.build.json",
-      },
-    ],
-  ],
+        project: 'tsconfig.build.json'
+      }
+    ]
+  ]
 };

@@ -58,14 +58,14 @@
   "scripts": {
     "build": "yarn clean && bob build",
     "clean": "rm -rf dist && rm -f *.tgz",
+    "example:expo": "yarn workspace example-expo",
     "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "prepack": "yarn build",
     "postinstall": "husky install",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "example:expo": "yarn workspace example-expo"
+    "prepack": "yarn build",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "type": "module",
   "types": "dist/typescript/index.d.ts",
