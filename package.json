@@ -1,5 +1,6 @@
 {
   "name": "react-native-library-template",
+  "version": "0.0.1",
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
@@ -57,7 +58,7 @@
   },
   "scripts": {
     "build": "yarn clean && bob build",
-    "clean": "rm -rf dist && rm -f *.tgz",
+    "clean": "./scripts/clean.sh",
     "example:expo": "yarn workspace example-expo",
     "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
