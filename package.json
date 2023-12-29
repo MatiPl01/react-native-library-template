@@ -1,6 +1,27 @@
 {
   "name": "react-native-library-template",
-  "type": "module",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
+    "@types/eslint": "^8",
+    "@types/react": "^18.2.46",
+    "eslint": "^8.56.0",
+    "eslint-config-react-native-matipl01": "^2.1.0",
+    "husky": "^8.0.0",
+    "jest": "^29.7.0",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1",
+    "react": "^18.2.0",
+    "react-native": "^0.73.1",
+    "react-native-builder-bob": "^0.23.2",
+    "semantic-release": "^22.0.12",
+    "syncpack": "^12.1.0",
+    "typescript": "^5.3.3"
+  },
   "files": [
     "src",
     "dist",
@@ -21,6 +42,7 @@
   },
   "main": "dist/commonjs/index",
   "module": "dist/module/index",
+  "packageManager": "yarn@4.0.2",
   "peerDependencies": {
     "react": "*",
     "react-native": "*"
@@ -32,29 +54,6 @@
   "resolutions": {
     "react": "18.2.0",
     "react-native": "0.73.1"
-  },
-  "packageManager": "yarn@4.0.2",
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^11.1.0",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^9.2.6",
-    "@semantic-release/npm": "^11.0.2",
-    "@semantic-release/release-notes-generator": "^12.1.0",
-    "@types/eslint": "^8",
-    "@types/react": "^18.2.46",
-    "eslint": "^8.56.0",
-    "eslint-config-react-native-matipl01": "^2.1.0",
-    "husky": "^8.0.3",
-    "jest": "^29.7.0",
-    "lint-staged": "^15.2.0",
-    "prettier": "^3.1.1",
-    "react": "^18.2.0",
-    "react-native": "^0.73.1",
-    "react-native-builder-bob": "^0.23.2",
-    "semantic-release": "^22.0.12",
-    "syncpack": "^12.1.0",
-    "typescript": "^5.3.3"
   },
   "scripts": {
     "bootstrap": "yarn example && yarn",
@@ -69,5 +68,6 @@
     "prepare": "husky install",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
+  "type": "module",
   "types": "dist/typescript/index.d.ts"
 }
