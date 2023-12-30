@@ -6,5 +6,5 @@ node_modules
 scripts
 dist
 
-examples
-!examples/app
+example
+!example/app

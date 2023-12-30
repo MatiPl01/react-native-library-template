@@ -12,6 +12,7 @@
     "@types/react": "^18.2.46",
     "eslint": "^8.56.0",
     "eslint-config-react-native-matipl01": "^2.1.0",
+    "get-yarn-workspaces": "^1.0.2",
     "husky": "^8.0.0",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.0",
@@ -38,7 +39,7 @@
       "yarn format:code"
     ],
     "package.json": [
-      "syncpack format"
+      "yarn format:deps"
     ]
   },
   "main": "dist/commonjs/index",
@@ -59,19 +60,20 @@
   "scripts": {
     "build": "yarn clean && bob build",
     "clean": "./scripts/clean.sh",
+    "example:bare": "yarn workspace example-bare",
     "example:expo": "yarn workspace example-expo",
-    "format:code": "prettier --write . --ignore-unknown",
+    "format:code": "prettier --write --ignore-unknown",
     "format:deps": "syncpack format",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "postinstall": "husky install",
+    "postinstall": "husky install && yarn example:bare pod",
     "prepack": "yarn build",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit && yarn workspace example-app typecheck"
   },
   "type": "module",
   "types": "dist/typescript/index.d.ts",
   "workspaces": [
-    "examples/*",
+    "example/*",
     "src"
   ]
 }
