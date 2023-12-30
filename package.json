@@ -68,8 +68,7 @@
     "lint:fix": "eslint --fix .",
     "postinstall": "husky install && yarn example:bare pod",
     "prepack": "yarn build",
-    "typecheck": "tsc -p tsconfig.json --noEmit && yarn typecheck:example",
-    "typecheck:example": "yarn workspace example-app typecheck"
+    "typecheck": "tsc -p tsconfig.json --noEmit && yarn workspace example-app typecheck"
   },
   "type": "module",
   "types": "dist/typescript/index.d.ts",

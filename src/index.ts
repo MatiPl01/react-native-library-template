@@ -1,1 +1,5 @@
-console.log('Hello via Bun!');
+/**
+ * Library entry file
+ *
+ * 👉 Export public library API from this file
+ */

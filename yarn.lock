@@ -6705,6 +6705,10 @@ __metadata:
 "example-app@workspace:example/app":
   version: 0.0.0-use.local
   resolution: "example-app@workspace:example/app"
+  dependencies:
+    react: "npm:18.2.0"
+    react-native: "npm:0.72.6"
+    react-native-safe-area-context: "npm:^4.8.2"
   languageName: unknown
   linkType: soft
 
@@ -6720,6 +6724,7 @@ __metadata:
     metro-react-native-babel-preset: "npm:0.76.8"
     react: "npm:18.2.0"
     react-native: "npm:0.72.6"
+    react-native-safe-area-context: "npm:^4.8.2"
   languageName: unknown
   linkType: soft
 
@@ -12494,6 +12499,16 @@ __metadata:
     react-native: "*"
   languageName: unknown
   linkType: soft
+
+"react-native-safe-area-context@npm:^4.8.2":
+  version: 4.8.2
+  resolution: "react-native-safe-area-context@npm:4.8.2"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 5430ef5d4f3510debd964423aa7ae2f9f4f3aea6e928b0dc6f7e63c21e967f3e71377a3b5df0bd5ceca291c4818670ee77afb3fc7a1091061449ae0fd3ed00b2
+  languageName: node
+  linkType: hard
 
 "react-native@npm:0.72.6":
   version: 0.72.6
