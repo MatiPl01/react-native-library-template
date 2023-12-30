@@ -1,0 +1,15 @@
+{
+  "name": "example-expo",
+  "version": "0.0.1",
+  "dependencies": {
+    "expo": "~49.0.15",
+    "expo-status-bar": "~1.6.0"
+  },
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "start": "expo start"
+  }
+}

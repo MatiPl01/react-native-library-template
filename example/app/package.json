@@ -1,0 +1,7 @@
+{
+  "name": "example-app",
+  "react-native": "index.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}

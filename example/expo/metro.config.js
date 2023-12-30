@@ -1,5 +1,6 @@
 const path = require('path');
 const { getDefaultConfig } = require('@expo/metro-config');
+const { mergeConfig } = require('@react-native/metro-config');
 
 const rootDir = path.resolve(__dirname, '../..');
 const rootPkg = require(path.join(rootDir, 'package.json'));
@@ -24,13 +25,10 @@ const externalNodeModules = modules.reduce((acc, name) => {
 
 const defaultConfig = getDefaultConfig(__dirname);
 
-module.exports = {
-  ...defaultConfig,
-
+module.exports = mergeConfig(defaultConfig, {
   projectRoot: __dirname,
 
   resolver: {
-    ...defaultConfig.resolver,
     nodeModulesPaths: [`${rootDir}/node_modules`],
     extraNodeModules: {
       ...externalNodeModules
@@ -45,4 +43,4 @@ module.exports = {
       }
     })
   }
-};
+});
