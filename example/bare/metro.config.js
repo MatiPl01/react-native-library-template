@@ -1,45 +1,21 @@
 const path = require('path');
+const getWorkspaces = require('get-yarn-workspaces');
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config');
 
-const rootDir = path.resolve(__dirname, '../..');
-const rootPkg = require(path.join(rootDir, 'package.json'));
+const workspaces = getWorkspaces(__dirname).filter(
+  workspaceDir => workspaceDir !== __dirname
+);
 
-const appDir = path.resolve(__dirname, '../app');
-const appPkg = require(path.join(appDir, 'package.json'));
-
-const modules = [
-  '@babel/runtime',
-  ...Object.keys({
-    ...rootPkg.dependencies,
-    ...rootPkg.peerDependencies,
-    ...appPkg.dependencies,
-    ...appPkg.peerDependencies
-  })
-];
-
-const externalNodeModules = modules.reduce((acc, name) => {
-  acc[name] = path.join(__dirname, 'node_modules', name);
-  return acc;
-}, {});
-
-const defaultConfig = getDefaultConfig(__dirname);
-
-module.exports = mergeConfig(defaultConfig, {
-  projectRoot: __dirname,
-
-  resolver: {
-    nodeModulesPaths: [`${rootDir}/node_modules`],
-    extraNodeModules: {
-      ...externalNodeModules
-    }
-  },
-
+const customConfig = {
+  watchFolders: [path.resolve(__dirname, '../../node_modules'), ...workspaces],
   transformer: {
     getTransformOptions: async () => ({
       transform: {
         experimentalImportSupport: false,
-        inlineRequires: true
+        inlineRequires: false
       }
     })
   }
-});
+};
+
+module.exports = mergeConfig(getDefaultConfig(__dirname), customConfig);
