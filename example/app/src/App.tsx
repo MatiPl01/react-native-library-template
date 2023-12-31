@@ -1,5 +1,5 @@
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Greeting } from 'react-native-library-template';
+import { Greeting } from '@lib';
 import { StyleSheet } from 'react-native';
 
 export default function App() {

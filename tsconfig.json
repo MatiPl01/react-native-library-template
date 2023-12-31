@@ -4,7 +4,8 @@
     "types": ["node", "jest"],
     "baseUrl": ".",
     "paths": {
-      "react-native-library-template": ["src"]
+      "@lib": ["src"],
+      "@app": ["example/app/src/"]
     }
   },
   "include": ["src", "jest.config.ts", "__tests__"],
