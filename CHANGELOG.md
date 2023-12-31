@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/MatiPl01/react-native-library-template/compare/v1.0.0...v1.0.1) (2023-12-31)
+
+
+### Bug Fixes
+
+* Release issues ([#11](https://github.com/MatiPl01/react-native-library-template/issues/11)) ([31fae2d](https://github.com/MatiPl01/react-native-library-template/commit/31fae2d1108f4b74c7760e4d1632227e3110b758))
+
 # 1.0.0 (2023-12-31)
 
 
