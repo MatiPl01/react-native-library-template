@@ -12,7 +12,7 @@
     "@babel/runtime": "^7.20.0",
     "@react-native/metro-config": "^0.72.11",
     "@types/react": "^18.2.46",
-    "metro-react-native-babel-preset": "0.76.8"
+    "metro-react-native-babel-preset": "0.77.0"
   },
   "engines": {
     "node": ">=16"
