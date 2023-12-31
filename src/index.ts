@@ -4,4 +4,5 @@
  * 👉 Export public library API from this file
  */
 
-export * from './greeting';
+export * from './components';
+export * from './utils';

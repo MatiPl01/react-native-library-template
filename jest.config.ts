@@ -9,7 +9,7 @@ const config: Config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   preset: 'jest-expo',
-  roots: ['<rootDir>/__tests__', '<rootDir>/example/app'],
+  roots: ['<rootDir>/src', '<rootDir>/example/app'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
   },
