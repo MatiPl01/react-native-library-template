@@ -1,7 +1,11 @@
 {
   "extends": "eslint-config-react-native-matipl01/tsconfig.base",
   "compilerOptions": {
-    "types": ["node", "jest"]
+    "types": ["node", "jest"],
+    "baseUrl": ".",
+    "paths": {
+      "react-native-library-template": ["src"]
+    }
   },
   "include": ["src", "jest.config.ts", "__tests__"],
   "exclude": ["example"]
