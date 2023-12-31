@@ -15,8 +15,8 @@ module.exports = {
         root: ['./'],
         extensions: ['.ts', '.tsx', '.svg', '.json'],
         alias: {
-          // This needs to be mirrored in tsconfig.json
-          [rootPkg.name]: path.join(rootDir, rootPkg['react-native'])
+          // This needs to be mirrored in ./tsconfig.json
+          '@lib': path.join(rootDir, rootPkg['react-native'])
         }
       }
     ]

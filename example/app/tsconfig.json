@@ -3,7 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "react-native-library-template": ["../../src"]
+      "@lib": ["../../src"],
+      "@app": ["./src"]
     }
   }
 }
