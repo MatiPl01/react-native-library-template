@@ -1,15 +1,21 @@
 /* eslint-disable import/no-unused-modules */
-import type { Config } from 'jest';
+import { type JestConfigWithTsJest, pathsToModuleNameMapper } from 'ts-jest';
 
-const config: Config = {
+import { compilerOptions } from './tsconfig.json';
+
+const config: JestConfigWithTsJest = {
   clearMocks: true,
   fakeTimers: {
     enableGlobally: true
   },
+  moduleDirectories: ['node_modules', '<rootDir>'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths ?? {}, {
+    prefix: '<rootDir>/'
+  }),
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   preset: 'jest-expo',
-  roots: ['<rootDir>/__tests__', '<rootDir>/example/app'],
+  roots: ['<rootDir>/src', '<rootDir>/example/app'],
   transform: {
     '^.+\\.tsx?$': 'ts-jest'
   },
