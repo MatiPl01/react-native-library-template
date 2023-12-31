@@ -43,7 +43,7 @@
     "*.{js,jsx,ts,tsx}": [
       "yarn lint:fix",
       "bash -c tsc --noEmit",
-      "yarn format:code"
+      "prettier --write --ignore-unknown"
     ],
     "package.json": [
       "yarn format:deps"
@@ -70,11 +70,12 @@
     "example:app": "yarn workspace example-app",
     "example:bare": "yarn workspace example-bare",
     "example:expo": "yarn workspace example-expo",
-    "format:code": "prettier --write --ignore-unknown",
+    "format:check": "prettier --check . --ignore-unknown",
+    "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "postinstall": "husky install && yarn example:bare pod",
+    "postinstall": "husky install",
     "prepack": "yarn build",
     "test": "jest",
     "typecheck": "tsc -p tsconfig.json --noEmit && yarn example:app typecheck"

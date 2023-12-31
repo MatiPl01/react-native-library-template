@@ -2,7 +2,10 @@
 Gemfile
 yarn.lock
 
-.vscode/**
-android/**
-ios/**
-node_modules/**
+.yarn
+.vscode
+android
+ios
+node_modules
+example/bare
+example/expo
