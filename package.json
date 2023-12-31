@@ -75,7 +75,7 @@
     "format:deps": "syncpack format",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "postinstall": "husky install && yarn example:bare pod",
+    "postinstall": "husky install",
     "prepack": "yarn build",
     "test": "jest",
     "typecheck": "tsc -p tsconfig.json --noEmit && yarn example:app typecheck"
