@@ -1,4 +1,4 @@
-babel.config.js
+babel.config.cjs
 metro.config.js
 jest.setup.js
 bob.config.cjs

@@ -1,6 +1,3 @@
 {
-  "extends": "eslint-config-react-native-matipl01/tsconfig.base",
-  "compilerOptions": {
-    "types": ["node", "jest"]
-  }
+  "extends": "eslint-config-react-native-matipl01/tsconfig.base"
 }

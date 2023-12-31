@@ -27,6 +27,7 @@
     "react-test-renderer": "^18.2.0",
     "semantic-release": "^22.0.12",
     "syncpack": "^12.1.0",
+    "ts-jest": "^29.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
@@ -66,6 +67,7 @@
   "scripts": {
     "build": "yarn clean && bob build",
     "clean": "./scripts/clean.sh",
+    "example:app": "yarn workspace example-app",
     "example:bare": "yarn workspace example-bare",
     "example:expo": "yarn workspace example-expo",
     "format:code": "prettier --write --ignore-unknown",
@@ -75,7 +77,7 @@
     "postinstall": "husky install && yarn example:bare pod",
     "prepack": "yarn build",
     "test": "jest",
-    "typecheck": "tsc -p tsconfig.json --noEmit && yarn workspace example-app typecheck"
+    "typecheck": "tsc -p tsconfig.json --noEmit && yarn example:app typecheck"
   },
   "type": "module",
   "types": "dist/typescript/index.d.ts",

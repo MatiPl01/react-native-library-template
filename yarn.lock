@@ -60,7 +60,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.18.5, @babel/core@npm:^7.20.0":
+"@babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.13.16, @babel/core@npm:^7.18.5, @babel/core@npm:^7.20.0, @babel/core@npm:^7.23.7":
   version: 7.23.7
   resolution: "@babel/core@npm:7.23.7"
   dependencies:
@@ -1495,7 +1495,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-env@npm:^7.18.2, @babel/preset-env@npm:^7.20.0":
+"@babel/preset-env@npm:^7.18.2, @babel/preset-env@npm:^7.20.0, @babel/preset-env@npm:^7.23.7":
   version: 7.23.7
   resolution: "@babel/preset-env@npm:7.23.7"
   dependencies:
@@ -3777,7 +3777,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^18.0.24, @types/react@npm:^18.2.46":
+"@types/react@npm:*, @types/react@npm:^18.2.46":
   version: 18.2.46
   resolution: "@types/react@npm:18.2.46"
   dependencies:
@@ -6972,11 +6972,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-bare@workspace:example/bare"
   dependencies:
-    "@babel/core": "npm:^7.20.0"
-    "@babel/preset-env": "npm:^7.20.0"
+    "@babel/core": "npm:^7.23.7"
+    "@babel/preset-env": "npm:^7.23.7"
     "@babel/runtime": "npm:^7.20.0"
     "@react-native/metro-config": "npm:^0.72.11"
-    "@types/react": "npm:^18.0.24"
+    "@types/react": "npm:^18.2.46"
     metro-react-native-babel-preset: "npm:0.76.8"
     react: "npm:18.2.0"
     react-native: "npm:0.72.6"
