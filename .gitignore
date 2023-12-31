@@ -178,3 +178,4 @@ dist
 
 dist/
 .expo
+*.tgz

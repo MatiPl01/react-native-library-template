@@ -1,6 +1,6 @@
 {
   "name": "example-bare",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "dependencies": {
     "react": "18.2.0",
     "react-native": "0.72.6",
