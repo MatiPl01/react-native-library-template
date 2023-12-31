@@ -76,7 +76,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "postinstall": "husky install",
-    "prepack": "yarn build",
+    "prepare": "yarn build",
     "test": "jest",
     "typecheck": "tsc -p tsconfig.json --noEmit && yarn example:app typecheck"
   },
