@@ -41,7 +41,7 @@
   "keywords": [],
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "yarn lint:fix",
+      "eslint --fix",
       "bash -c tsc --noEmit",
       "prettier --write --ignore-unknown"
     ],
