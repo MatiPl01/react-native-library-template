@@ -34,6 +34,10 @@
   "repository": "MatiPl01/react-native-library-template.git",
   "scripts": {
     "format:deps": "syncpack format",
+    "lib:format:check": "cd template && yarn format:check && cd ..",
+    "lib:lint": "cd template && yarn lint && cd ..",
+    "lib:test": "cd template && yarn test && cd ..",
+    "lib:typecheck": "cd template && yarn typecheck && cd ..",
     "library:install": "cd template && yarn && cd ..",
     "postinstall": "yarn library:install",
     "prepare": "husky install"
