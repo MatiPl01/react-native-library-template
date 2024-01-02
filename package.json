@@ -1,0 +1,45 @@
+{
+  "name": "react-native-library-template",
+  "description": "A usable template for setting up a new React Native library. It's designed to reduce the hassle of configuration and help quickly start the project.",
+  "version": "1.0.0",
+  "author": "Mateusz Łopaciński <lop.mateusz.2001@gmail.com>",
+  "bugs": "https://github.com/MatiPl01/react-native-library-template/issues",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/release-notes-generator": "^12.1.0",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.0",
+    "syncpack": "^12.1.0"
+  },
+  "files": [
+    "LICENSE",
+    "template",
+    "template.config.js"
+  ],
+  "homepage": "https://github.com/MatiPl01/react-native-library-template#readme",
+  "keywords": [],
+  "license": "MIT",
+  "lint-staged": {
+    "package.json": [
+      "yarn format:deps"
+    ]
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "MatiPl01/react-native-library-template.git",
+  "scripts": {
+    "format:deps": "syncpack format",
+    "lib:format:check": "cd template && yarn format:check && cd ..",
+    "lib:lint": "cd template && yarn lint && cd ..",
+    "lib:test": "cd template && yarn test && cd ..",
+    "lib:typecheck": "cd template && yarn typecheck && cd ..",
+    "library:install": "cd template && yarn && cd ..",
+    "postinstall": "yarn library:install",
+    "prepare": "husky install"
+  }
+}
