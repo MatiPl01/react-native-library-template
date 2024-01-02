@@ -1,4 +1,4 @@
 #!/bin/bash
 if [ -d '.git' ]; then
-  husky install
+  npx husky install
 fi

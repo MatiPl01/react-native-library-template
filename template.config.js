@@ -1,4 +1,5 @@
 module.exports = {
-  placeholderName: "react-native-library-template",
+  placeholderName: "library-name",
   templateDir: "./template",
+  postInitScript: "./scripts/library-name-casing.js",
 };
