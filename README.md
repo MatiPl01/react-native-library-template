@@ -1,1 +1,3 @@
-# React Native Library Template
+# 📕 Your library title
+
+🚀 Your awesome library description
