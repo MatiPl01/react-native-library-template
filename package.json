@@ -4,6 +4,10 @@
   "version": "1.0.0",
   "author": "Mateusz Łopaciński <lop.mateusz.2001@gmail.com>",
   "bugs": "https://github.com/MatiPl01/react-native-library-template/issues",
+  "dependencies": {
+    "degit": "^2.8.4",
+    "yargs": "^17.7.2"
+  },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
@@ -11,9 +15,12 @@
     "@semantic-release/github": "^9.2.6",
     "@semantic-release/npm": "^11.0.2",
     "@semantic-release/release-notes-generator": "^12.1.0",
-    "husky": "^8.0.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
-    "syncpack": "^12.1.0"
+    "prettier": "^3.1.1",
+    "syncpack": "^12.3.0"
   },
   "files": [
     "LICENSE",
@@ -25,6 +32,12 @@
   "keywords": [],
   "license": "MIT",
   "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "yarn lib:lint:fix",
+      "yarn lib:typecheck",
+      "prettier --write --ignore-unknown"
+    ],
     "package.json": [
       "yarn format:deps"
     ]
@@ -34,12 +47,17 @@
   },
   "repository": "MatiPl01/react-native-library-template.git",
   "scripts": {
+    "format:check": "prettier --check . --ignore-unknown",
+    "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
-    "lib:format:check": "cd template && yarn format:check && cd ..",
+    "lib:format:deps": "cd template && yarn format:deps && cd ..",
     "lib:lint": "cd template && yarn lint && cd ..",
+    "lib:lint:fix": "cd template && yarn lint:fix && cd ..",
     "lib:test": "cd template && yarn test && cd ..",
     "lib:typecheck": "cd template && yarn typecheck && cd ..",
     "library:install": "cd template && yarn && cd ..",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
     "postinstall": "yarn library:install",
     "prepare": "husky install"
   }
