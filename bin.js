@@ -2,11 +2,11 @@
 
 const AUTHOR = 'MatiPl01';
 const REPOSITORY = 'react-native-library-template';
+const TEMPLATE_DIR = 'template';
 
-const yargs = require('yargs');
 const degit = require('degit');
 
-const emitter = degit(`${AUTHOR}/${REPOSITORY}`, {
+const emitter = degit(`${AUTHOR}/${REPOSITORY}/${TEMPLATE_DIR}`, {
   cache: true,
   force: true,
   verbose: true
@@ -19,5 +19,3 @@ emitter.on('info', info => {
 emitter.clone(REPOSITORY).then(() => {
   console.log('done');
 });
-
-console.log(yargs.argv); // TODO - improve script
