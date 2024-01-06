@@ -7,7 +7,6 @@ const TEMPLATE_DIR = 'template';
 const degit = require('degit');
 
 const emitter = degit(`${AUTHOR}/${REPOSITORY}/${TEMPLATE_DIR}`, {
-  cache: true,
   force: true,
   verbose: true
 });

@@ -20,7 +20,7 @@ Node 18 or greater is required. Development for iOS needs a Mac and Xcode.
 To create a fresh project, just run:
 
 ```sh
-npx rnlibrary
+npx rn-lib-template
 ```
 
 Before starting development, install all necessary dependencies with `yarn`:
