@@ -6,7 +6,16 @@ Perfect for both bare React Native applications and those created through Expo, 
 
 ## Features
 
+- code style enforcement with eslint, prettier and TypeScript,
+- precommit hooks checking code style and type issues,
+- GitHub Actions enhancing the development process,
+- automated library depolyments to npm and seamless versioning thanks to [_semantic-release_](https://github.com/semantic-release/semantic-release),
+- example app for both bare React Native projects and Expo managed ones,
+- `jest` setup with example tests
+
 ## Requirements
+
+Node 18 or greater is required. Development for iOS requires a Mac and Xcode.
 
 ## Quick start
 
@@ -28,6 +37,15 @@ yarn
 yarn example:bare pod
 ```
 
+## GitHub Actions
+
+To use GitHub Actions included in this boilerplate, you will have to provide 2 secrets (refer to [this](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) page of documentation for more details about secrets):
+
+`GH_TOKEN` - GitHub token with `repo` permissions (see [docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information GitHub access tokens),
+`NPM_TOKEN` - npm token used by [_semantic-release_](https://github.com/semantic-release/semantic-release) to automatically deploy the library (see [docs](https://docs.npmjs.com/about-access-tokens) for more details about npm access tokens).
+
+Alteratively, if you don't want to use GitHub Actions, you can simply remove workflows from the `.github` directory.
+
 ## Library development
 
 ### Project structure
@@ -39,7 +57,7 @@ Project can be divided into 2 subprojects:
 
 ### Library scope
 
-The root directory of the project contains multiple configuration files for tools such as prettier, eslint and typescript. It also contains config of the [**semantic-release**](https://github.com/semantic-release/semantic-release) library used for easy npm deployments and proper library versioning as well as the [**react-native-builder-bob**](https://github.com/callstack/react-native-builder-bob) config used to build the library from source files.
+The root directory of the project contains multiple configuration files for tools such as prettier, eslint and typescript. It also contains config of the [_semantic-release_](https://github.com/semantic-release/semantic-release) library used for easy npm deployments and proper library versioning as well as the [_react-native-builder-bob_](https://github.com/callstack/react-native-builder-bob) config used to build the library from source files.
 
 #### Library source files
 
@@ -88,3 +106,7 @@ yarn example:expo start|android|ios
 - `android` - starts example app on the Android emulator/device,
 - `ios` - starts example app on the iOS simulator/device,
 - `pod` - installs Pods required by example app native iOS dependencies.
+
+### Automatic deployments
+
+The `release.yaml` workflow included in the project contains the auto deployment logic. By default, the deployment will be caused on the **workflow dispatch** action (manually from the GitHub Actions page). You can change this behavior by modifying the workflow triggers.
