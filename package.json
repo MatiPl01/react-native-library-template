@@ -1,5 +1,5 @@
 {
-  "name": "rnlibrary",
+  "name": "rn-lib-template",
   "description": "A usable template for setting up a new React Native library. It's designed to reduce the hassle of configuration and help quickly start the project.",
   "version": "1.0.0",
   "author": "Mateusz Łopaciński <lop.mateusz.2001@gmail.com>",
