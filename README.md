@@ -1,102 +1,100 @@
-# React Native Library Template
+# 📚 React Native Library Template
 
-This repository hosts an optimized React Native library boilerplate, designed to accelerate the process of library development.
+This repository is an optimized React Native library boilerplate, designed to boost your library development process.🧑‍💻🔧 It's tailored for both bare React Native applications and Expo-created ones. This boilerplate is equipped with valuable tools, simplifying library development and ensuring high-quality code.
 
-Perfect for both bare React Native applications and those created through Expo, this boilerplate comes equipped with useful tools. These tools make library development straightforward and maintain high code quality.
+## 🌟 Features
 
-## Features
+- Enforces code style with eslint, prettier, and TypeScript,
+- Precommit hooks checking code style and type issues,
+- GitHub Actions to aid in your development process,
+- Automated library deployments to npm and hassle-free versioning thanks to [_semantic-release_](https://github.com/semantic-release/semantic-release),
+- Provides an example app for both bare React Native projects and Expo-managed ones,
+- `jest` setup is also available with example tests
 
-- code style enforcement with eslint, prettier and TypeScript,
-- precommit hooks checking code style and type issues,
-- GitHub Actions enhancing the development process,
-- automated library depolyments to npm and seamless versioning thanks to [_semantic-release_](https://github.com/semantic-release/semantic-release),
-- example app for both bare React Native projects and Expo managed ones,
-- `jest` setup with example tests
+## 📋 Requirements
 
-## Requirements
+Node 18 or greater is required. Development for iOS needs a Mac and Xcode.
 
-Node 18 or greater is required. Development for iOS requires a Mac and Xcode.
+## 🚀 Quick Start
 
-## Quick start
-
-To create a new project simply run:
+To create a fresh project, just run:
 
 ```sh
 npx rnlibrary
 ```
 
-Before you start the development, install all necessary dependencies with `yarn`:
+Before starting development, install all necessary dependencies with `yarn`:
 
 ```sh
 yarn
 ```
 
-**(iOS only)** Install required Pods for the bare React Native example app:
+**For iOS only**: Install required Pods for the bare React Native example app:
 
 ```sh
 yarn example:bare pod
 ```
 
-## GitHub Actions
+## 💫 GitHub Actions
 
-To use GitHub Actions included in this boilerplate, you will have to provide 2 secrets (refer to [this](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) page of documentation for more details about secrets):
+To use the GitHub Actions bundled with this boilerplate, you'll need to provide 2 secrets (refer to [this](https://docs.github.com/en/actions/security-guides/using-secrets-in-github-actions) page for more about secrets):
 
-`GH_TOKEN` - GitHub token with `repo` permissions (see [docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more information GitHub access tokens),
-`NPM_TOKEN` - npm token used by [_semantic-release_](https://github.com/semantic-release/semantic-release) to automatically deploy the library (see [docs](https://docs.npmjs.com/about-access-tokens) for more details about npm access tokens).
+- `GH_TOKEN` - a GitHub token with `repo` permissions (check [docs](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) for more on GitHub access tokens).
+- `NPM_TOKEN` - an npm token employed by [_semantic-release_](https://github.com/semantic-release/semantic-release) for automatic library deployment (see [docs](https://docs.npmjs.com/about-access-tokens) for info on npm access tokens).
 
-Alteratively, if you don't want to use GitHub Actions, you can simply remove workflows from the `.github` directory.
+Alternatively, remove workflows from the `.github` directory if you prefer not to use GitHub Actions.
 
-## Library development
+## 🛠️ Library Development
 
-### Project structure
+### 🏗️ Project Structure
 
-Project can be divided into 2 subprojects:
+The project can be categorized into 2 subprojects:
 
-- Library source code,
-- Example app
+- Library Source Code
+- Example App
 
-### Library scope
+### 🛠️ Library Scope
 
-The root directory of the project contains multiple configuration files for tools such as prettier, eslint and typescript. It also contains config of the [_semantic-release_](https://github.com/semantic-release/semantic-release) library used for easy npm deployments and proper library versioning as well as the [_react-native-builder-bob_](https://github.com/callstack/react-native-builder-bob) config used to build the library from source files.
+The root directory of the project houses several configuration files for tools like prettier, eslint, and TypeScript. It also contains the config of the [_semantic-release_](https://github.com/semantic-release/semantic-release) library and the [_react-native-builder-bob_](https://github.com/callstack/react-native-builder-bob) config for convenient npm deployments and proper versioning.
 
-#### Library source files
+#### Library Source Files
 
-By default, the resulting library will contain files specified under the `files` key in the `package.json`:
+By default, the resulting library will include files specified under the `files` key in the `package.json`:
 
-- `src` directory - the directory where all library source should be written,
-- `dist` directory - will be generated by **react-native-builder-bob** during the build process,
-- `LICENSE` - you should add your `LICENSE` file as it is not provided by default,
-- `CHANGELOG.md` - file containing all versions history with included changes, generated automatically by the **semantic-release** library.
+- `src` directory - where you write all library source code,
+- `dist` directory - generated by **react-native-builder-bob** during the build process,
+- `LICENSE` - you should include your `LICENSE` file because it's not provided by default,
+- `CHANGELOG.md` - a file containing all version history with included changes, automatically generated by the **semantic-release** library
 
-#### Library dependencies
+#### Library Dependencies
 
 If you want to add dependency that will be used by your library, you should add it in the project root. I decided to use the `yarn` package manager as it is one of the most commonly used package managers which has good support for monorepos with workspaces (the example app). All dependencies should be installed with `yarn`.
 
-### Example app
+### 📱 Example App
 
-The template contains also example app which will be useful to test functionalities implemented in the library and create showcase features for library users. The example app won't be included in the library source files depoloyed to npm.
+This template also includes an example app that is handy for testing features implemented in the library and showcasing them to your users. The example app is not part of the library source files deployed to npm.
 
-The example app lives in the `example` directory. You can see that this directory contains 3 subdirectories:
+The example app resides in the `example` directory. Inside, you'll find three subdirectories:
 
-- `app` - where all example app source code should be located,
-- `bare` - bare React Native app example,
-- `expo` - React Native Expo app example.
+- `app` - Where the example app source code is located.
+- `bare` - A bare example of a React Native app.
+- `expo` - An example of a React Native Expo app.
 
-If you don't want to support **Expo** or **bare** React Native apps, simply remove the corresponding directory.
+If you don't need to support **Expo** or a **bare** React Native apps, you can just remove the corresponding directory.
 
-#### Example app dependencies
+#### Example App Dependencies
 
-All example app dependencies should be installed in the `example/app` directory that contains code shared between `bare` and `expo` example app. Similarly as in the library, you should use `yarn` package manager to manage your example app dependencies.
+Install all example app dependencies in the `example/app` directory. Similarly to the library, use `yarn` package manager to handle your example app dependencies.
 
-#### Useful commands
+#### Useful Commands
 
-For bare React Native example app:
+For launching the bare React Native example app:
 
 ```sh
 yarn example:bare start|android|ios|pod
 ```
 
-For Expo React Native app:
+For the Expo React Native app:
 
 ```sh
 yarn example:expo start|android|ios
@@ -107,6 +105,6 @@ yarn example:expo start|android|ios
 - `ios` - starts example app on the iOS simulator/device,
 - `pod` - installs Pods required by example app native iOS dependencies.
 
-### Automatic deployments
+### 🔄 Automatic deployments
 
 The `release.yaml` workflow included in the project contains the auto deployment logic. By default, the deployment will be caused on the **workflow dispatch** action (manually from the GitHub Actions page). You can change this behavior by modifying the workflow triggers.
