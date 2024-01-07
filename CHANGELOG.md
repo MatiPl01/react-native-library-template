@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/MatiPl01/react-native-library-template/compare/v1.0.0...v1.1.0) (2024-01-07)
+
+
+### Features
+
+* Rewrite initialization script ([#25](https://github.com/MatiPl01/react-native-library-template/issues/25)) ([b1de7de](https://github.com/MatiPl01/react-native-library-template/commit/b1de7dead4c462d69d618990d0ad9faf14e04516))
+
 # 1.0.0 (2024-01-06)
 
 
