@@ -1,3 +1,4 @@
+import path from 'path';
 import degit from 'degit';
 import logger from './logger.js';
 
@@ -5,7 +6,7 @@ const AUTHOR = 'MatiPl01';
 const REPOSITORY = 'react-native-library-template';
 const TEMPLATE_DIR = 'template';
 
-const init = (projectName, verbose = false) => {
+const init = (projectName, verbose = false, directory = '.') => {
   logger.info(`Initializing a new project: ${projectName}`);
 
   const emitter = degit(`${AUTHOR}/${REPOSITORY}/${TEMPLATE_DIR}`, {
@@ -21,7 +22,9 @@ const init = (projectName, verbose = false) => {
     logger.warning(info.message);
   });
 
-  emitter.clone(projectName).then(() => {
+  const projectPath = path.resolve(directory, projectName);
+
+  emitter.clone(projectPath).then(() => {
     logger.success('Template initialized successfully!');
   });
 };

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers';
-import logger from './logger.js';
 import init from './init.js';
+import logger from './logger.js';
+import { hideBin } from 'yargs/helpers';
 
 yargs(hideBin(process.argv))
   .command(
@@ -19,8 +19,13 @@ yargs(hideBin(process.argv))
         type: 'boolean',
         description: 'Run with verbose logging'
       });
+      yargs.option('directory', {
+        alias: 'd',
+        type: 'string',
+        description: 'Directory to initialize the project in'
+      });
     },
-    argv => init(argv.projectName, argv.verbose)
+    argv => init(argv.projectName, argv.verbose, argv.directory)
   )
   .demandCommand(1, 'You need at least one command before moving on')
   .help()

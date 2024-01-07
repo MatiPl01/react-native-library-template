@@ -29,7 +29,7 @@
     "LICENSE",
     "scripts",
     "template",
-    "template.config.js"
+    "bin"
   ],
   "homepage": "https://github.com/MatiPl01/react-native-library-template#readme",
   "keywords": [
