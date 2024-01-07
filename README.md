@@ -20,10 +20,10 @@ Node 18 or greater is required. Development for iOS needs a Mac and Xcode.
 To create a fresh project, just run:
 
 ```sh
-npx rn-lib-temp
+npx rn-lib-temp <projectName>
 ```
 
-Before starting development, install all necessary dependencies with `yarn`:
+Before starting development, go to the directory where you created the template project and install all necessary dependencies with `yarn`:
 
 ```sh
 yarn
@@ -33,6 +33,14 @@ yarn
 
 ```sh
 yarn example:bare pod
+```
+
+### Getting help
+
+For more details about the `npx rn-lib-temp` command use the following command:
+
+```sh
+npx rn-lib-temp help
 ```
 
 ## 💫 GitHub Actions
