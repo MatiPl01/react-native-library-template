@@ -3,7 +3,7 @@
   "description": "A usable template for setting up a new React Native library. It's designed to reduce the hassle of configuration and help quickly start the project.",
   "version": "1.0.0",
   "author": "Mateusz Łopaciński <lop.mateusz.2001@gmail.com>",
-  "bin": "./bin.js",
+  "bin": "./bin/index.js",
   "bugs": "https://github.com/MatiPl01/react-native-library-template/issues",
   "dependencies": {
     "degit": "^2.8.4"
@@ -15,13 +15,15 @@
     "@semantic-release/github": "^9.2.6",
     "@semantic-release/npm": "^11.0.2",
     "@semantic-release/release-notes-generator": "^12.1.0",
+    "chalk": "^5.3.0",
     "eslint": "^8.56.0",
     "eslint-plugin-prettier": "^5.1.2",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "semantic-release": "^22.0.12",
-    "syncpack": "^12.3.0"
+    "syncpack": "^12.3.0",
+    "yargs": "^17.7.2"
   },
   "files": [
     "LICENSE",
@@ -30,7 +32,23 @@
     "template.config.js"
   ],
   "homepage": "https://github.com/MatiPl01/react-native-library-template#readme",
-  "keywords": [],
+  "keywords": [
+    "boilerplate",
+    "eslint",
+    "expo",
+    "husky",
+    "library",
+    "lint",
+    "npm",
+    "prettier",
+    "react-native",
+    "react-native-cli",
+    "setup",
+    "template",
+    "ts",
+    "typecheck",
+    "typescript"
+  ],
   "license": "MIT",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -62,5 +80,6 @@
     "lint:fix": "eslint --fix .",
     "postinstall": "yarn library:install",
     "prepare": "husky install"
-  }
+  },
+  "type": "module"
 }
