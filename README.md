@@ -20,7 +20,7 @@ Node 18 or greater is required. Development for iOS needs a Mac and Xcode.
 To create a fresh project, just run:
 
 ```sh
-npx rn-lib-temp <projectName>
+npx rn-lib-temp init <projectName>
 ```
 
 Before starting development, go to the directory where you created the template project and install all necessary dependencies with `yarn`:
