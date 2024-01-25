@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.1...v1.1.2) (2024-01-25)
+
+
+### Bug Fixes
+
+* Move chalk dep to dependencies ([#31](https://github.com/MatiPl01/react-native-library-template/issues/31)) ([07aee34](https://github.com/MatiPl01/react-native-library-template/commit/07aee34fd6a3a2b71ff1015b0831edc8f0ab6d02))
+
 ## [1.1.1](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.0...v1.1.1) (2024-01-25)
 
 
