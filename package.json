@@ -6,7 +6,8 @@
   "bin": "./bin/index.js",
   "bugs": "https://github.com/MatiPl01/react-native-library-template/issues",
   "dependencies": {
-    "degit": "^2.8.4"
+    "degit": "^2.8.4",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
@@ -22,8 +23,7 @@
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "semantic-release": "^23.0.0",
-    "syncpack": "^12.3.0",
-    "yargs": "^17.7.2"
+    "syncpack": "^12.3.0"
   },
   "files": [
     "LICENSE",
