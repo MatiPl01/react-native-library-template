@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.3...v1.1.4) (2024-01-26)
+
+
+### Bug Fixes
+
+* Bare example app dependencies pods resolution issue ([#33](https://github.com/MatiPl01/react-native-library-template/issues/33)) ([2bec78f](https://github.com/MatiPl01/react-native-library-template/commit/2bec78f2819f5c103a7c22c0eda3188a1319eddd))
+
 ## [1.1.3](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.2...v1.1.3) (2024-01-26)
 
 
