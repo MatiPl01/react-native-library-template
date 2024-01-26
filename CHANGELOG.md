@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.2...v1.1.3) (2024-01-26)
+
+
+### Bug Fixes
+
+* Add missing package name change functionality ([#32](https://github.com/MatiPl01/react-native-library-template/issues/32)) ([aa52845](https://github.com/MatiPl01/react-native-library-template/commit/aa5284561d9e20b90083251d545b5f9a2cf80559))
+
 ## [1.1.2](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.1...v1.1.2) (2024-01-25)
 
 
