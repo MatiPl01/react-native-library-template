@@ -1,7 +1,7 @@
 import path from 'path';
 import degit from 'degit';
 import logger from './logger.js';
-import { loadJSON, writeJSON } from './utils.js';
+import { readJSON, writeJSON } from './utils.js';
 
 const AUTHOR = 'MatiPl01';
 const REPOSITORY = 'react-native-library-template';
@@ -32,7 +32,7 @@ const init = (projectName, verbose = false, directory = '.') => {
       );
     }
     const packageJsonPath = path.resolve(projectPath, 'package.json');
-    const packageJson = loadJSON(packageJsonPath);
+    const packageJson = readJSON(packageJsonPath);
     packageJson.name = projectName;
     writeJSON(packageJsonPath, packageJson);
     if (verbose) {
