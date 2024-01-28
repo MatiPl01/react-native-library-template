@@ -10,8 +10,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "pod": "cd ios && pod install && cd ..",
-    "postinstall": "yarn warnings:clear",
+    "postinstall": "yarn watchman:clear",
     "start": "react-native start",
-    "warnings:clear": "watchman watch-del-all --if-present"
+    "watchman:clear": "command -v watchman >/dev/null 2>&1 && watchman watch-del-all || echo 'Watchman not found, skipping...'"
   }
 }
