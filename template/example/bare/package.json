@@ -1,6 +1,9 @@
 {
   "name": "example-bare",
   "version": "1.0.0",
+  "dependencies": {
+    "react-native": "*"
+  },
   "private": true,
   "scripts": {
     "android": "react-native run-android",
