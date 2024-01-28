@@ -12,6 +12,6 @@
     "pod": "cd ios && pod install && cd ..",
     "postinstall": "yarn warnings:clear",
     "start": "react-native start",
-    "warnings:clear": "watchman watch-del-all"
+    "warnings:clear": "watchman watch-del-all --if-present"
   }
 }
