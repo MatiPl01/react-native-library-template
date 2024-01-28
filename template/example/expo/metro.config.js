@@ -4,19 +4,12 @@ const { getDefaultConfig } = require('@expo/metro-config');
 const { mergeConfig } = require('@react-native/metro-config');
 
 const workspaces = getWorkspaces(__dirname).filter(
-  workspaceDir => workspaceDir !== __dirname
+  // Include all workspaces except bare in the expo example
+  workspaceDir => !workspaceDir.includes('bare')
 );
 
 const customConfig = {
-  watchFolders: [path.resolve(__dirname, '../../node_modules'), ...workspaces],
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: false
-      }
-    })
-  }
+  watchFolders: [path.resolve(__dirname, '../../node_modules'), ...workspaces]
 };
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), customConfig);

@@ -1168,17 +1168,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-object-assign@npm:^7.16.7":
-  version: 7.23.3
-  resolution: "@babel/plugin-transform-object-assign@npm:7.23.3"
-  dependencies:
-    "@babel/helper-plugin-utils": "npm:^7.22.5"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 44467e8bd8eaae3fe54834dac9d1647d2b2598529a90722281832f6905d485c05e37b5fbd6fd7660c5d2e32e6f005824cda8a9321ddac2e2d619536fafc9783c
-  languageName: node
-  linkType: hard
-
 "@babel/plugin-transform-object-rest-spread@npm:^7.23.4":
   version: 7.23.4
   resolution: "@babel/plugin-transform-object-rest-spread@npm:7.23.4"
@@ -1638,7 +1627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/preset-typescript@npm:^7.13.0, @babel/preset-typescript@npm:^7.16.7, @babel/preset-typescript@npm:^7.17.12":
+"@babel/preset-typescript@npm:^7.13.0, @babel/preset-typescript@npm:^7.17.12":
   version: 7.23.3
   resolution: "@babel/preset-typescript@npm:7.23.3"
   dependencies:
@@ -3891,6 +3880,15 @@ __metadata:
   version: 15.7.11
   resolution: "@types/prop-types@npm:15.7.11"
   checksum: e53423cf9d510515ef8b47ff42f4f1b65a7b7b37c8704e2dbfcb9a60defe0c0e1f3cb1acfdeb466bad44ca938d7c79bffdd51b48ffb659df2432169d0b27a132
+  languageName: node
+  linkType: hard
+
+"@types/react-native@npm:^0.73.0":
+  version: 0.73.0
+  resolution: "@types/react-native@npm:0.73.0"
+  dependencies:
+    react-native: "npm:*"
+  checksum: 81b8824f3bea30f18f92bb1e7c69777801b6b91a603c712173179b10e8fd6754f3594841dc452d0fc4a4cdc597e366fdf7839d27e0c5c5957f7dadde65882212
   languageName: node
   linkType: hard
 
@@ -10529,6 +10527,7 @@ __metadata:
     "@types/jest": "npm:^29.5.11"
     "@types/node": "npm:^20.10.6"
     "@types/react": "npm:^18.2.48"
+    "@types/react-native": "npm:^0.73.0"
     "@types/react-test-renderer": "npm:^18"
     eslint: "npm:^8.56.0"
     eslint-config-react-native-matipl01: "npm:^2.1.0"
@@ -10543,7 +10542,6 @@ __metadata:
     react-native: "npm:^0.72.6"
     react-native-builder-bob: "npm:^0.23.2"
     react-native-gesture-handler: "npm:^2.14.1"
-    react-native-reanimated: "npm:^3.6.2"
     react-native-svg: "npm:^14.1.0"
     react-test-renderer: "npm:^18.2.0"
     semantic-release: "npm:^22.0.12"
@@ -13459,27 +13457,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: f8905498d18b6052b27ab54e33516aa7346d219b847a68ed4ef9ad7286865b8649aa9026b934a192f66472e8ee3efe503698762e90646e67604f9a2b8690e65d
-  languageName: node
-  linkType: hard
-
-"react-native-reanimated@npm:^3.6.2":
-  version: 3.6.2
-  resolution: "react-native-reanimated@npm:3.6.2"
-  dependencies:
-    "@babel/plugin-transform-object-assign": "npm:^7.16.7"
-    "@babel/preset-typescript": "npm:^7.16.7"
-    convert-source-map: "npm:^2.0.0"
-    invariant: "npm:^2.2.4"
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-    "@babel/plugin-proposal-nullish-coalescing-operator": ^7.0.0-0
-    "@babel/plugin-proposal-optional-chaining": ^7.0.0-0
-    "@babel/plugin-transform-arrow-functions": ^7.0.0-0
-    "@babel/plugin-transform-shorthand-properties": ^7.0.0-0
-    "@babel/plugin-transform-template-literals": ^7.0.0-0
-    react: "*"
-    react-native: "*"
-  checksum: d2ec124100a6e0061cbec043b0184f8d2d2c4fa71bc4895b6ed719ff9c5ced206ab6bd880a0f6479a63014b0c93d31c91196c79ec29cdae2d4a92c312fb423c1
   languageName: node
   linkType: hard
 
