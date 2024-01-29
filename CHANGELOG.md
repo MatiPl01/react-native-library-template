@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.4...v1.2.0) (2024-01-29)
+
+
+### Bug Fixes
+
+* Dependencies resolution issues ([#36](https://github.com/MatiPl01/react-native-library-template/issues/36)) ([a630a43](https://github.com/MatiPl01/react-native-library-template/commit/a630a434662a9953138dbdb32b83a147bc72ed44))
+* Native dependencies and babel plugins resolution issues ([#37](https://github.com/MatiPl01/react-native-library-template/issues/37)) ([6904192](https://github.com/MatiPl01/react-native-library-template/commit/6904192a369baf30c0442b6d978f7c66b3b0e4a2))
+
+
+### Features
+
+* Add automatic dependencies installation after setup ([#34](https://github.com/MatiPl01/react-native-library-template/issues/34)) ([b812a69](https://github.com/MatiPl01/react-native-library-template/commit/b812a692ec5f94249fa0ce8de8b06949d79ce748))
+
 ## [1.1.4](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.3...v1.1.4) (2024-01-26)
 
 
