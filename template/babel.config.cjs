@@ -1,5 +1,5 @@
 /**
- * This babel config is used by Jest.
+ * Modify this babel config file when you need to add a new plugin.
  */
 const path = require('path');
 
