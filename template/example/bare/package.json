@@ -2,8 +2,8 @@
   "name": "example-bare",
   "version": "1.0.0",
   "dependencies": {
-    "react": "18.2.0",
-    "react-native": "0.72.6"
+    "react": "^18.2.0",
+    "react-native": "0.73.6"
   },
   "private": true,
   "scripts": {
@@ -13,5 +13,8 @@
     "postinstall": "yarn watchman:clear",
     "start": "react-native start",
     "watchman:clear": "command -v watchman >/dev/null 2>&1 && watchman watch-del-all || echo 'Watchman not found, skipping...'"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

@@ -2,5 +2,7 @@
 yarn.lock
 .yarn
 .vscode
+.pnp.cjs
+.pnp.loader.mjs
 node_modules
 CHANGELOG.md
