@@ -1,4 +1,4 @@
-babel.config.cjs
+<!-- babel.config.cjs
 metro.config.js
 jest.setup.js
 bob.config.cjs
@@ -8,4 +8,4 @@ scripts
 dist
 
 example
-!example/app
+!example/app -->
