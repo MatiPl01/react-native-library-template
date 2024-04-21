@@ -14,7 +14,12 @@ module.exports = function (api) {
   api.cache(true);
   return {
     extends: path.join(rootDir, 'babel.config.cjs'),
-    presets: ['module:@react-native/babel-preset'],
+    presets: [
+      [
+        'module:@react-native/babel-preset',
+        { "useTransformReactJSXExperimental": true }
+      ]
+    ],
     plugins: [
       [
         'module-resolver',

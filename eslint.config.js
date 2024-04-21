@@ -8,11 +8,12 @@ const ignores = [
   // Directories and their contents
   'node_modules/**/*',
   'template/**/*',
+  '.yarn/**/*',
   'dist/**/*',
   // Files
   'README.md',
   '.pnp.cjs',
-  '.pnp.loader.mjs',
+  '.pnp.loader.mjs'
 ];
 
 const configs = [
@@ -25,15 +26,15 @@ const configs = [
       ecmaVersion: 'latest',
       sourceType: 'module',
       globals: {
-        ...globals.node,
+        ...globals.node
       }
     },
     rules: {
       indent: ['error', 2],
       'linebreak-style': ['error', 'unix'],
       quotes: ['error', 'single'],
-      semi: ['error', 'always'],
-    },
+      semi: ['error', 'always']
+    }
   },
   // Applies to all configs listed above (needs to be a separate object)
   {
