@@ -179,3 +179,9 @@ dist
 dist/
 .expo
 *.tgz
+
+# yarn
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

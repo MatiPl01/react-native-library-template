@@ -19,3 +19,10 @@ package-lock.json
 
 node_modules
 template/js
+
+# yarn
+#
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
