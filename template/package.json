@@ -74,6 +74,7 @@
     "example:app": "yarn workspace example-app",
     "example:bare": "yarn workspace example-bare",
     "example:expo": "yarn workspace example-expo",
+    "format": "yarn format:code && yarn format:deps",
     "format:check": "prettier --check . --ignore-unknown",
     "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
