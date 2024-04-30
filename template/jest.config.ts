@@ -16,7 +16,18 @@ const config: JestConfigWithTsJest = {
   preset: 'jest-expo',
   roots: ['<rootDir>/src', '<rootDir>/example/app'],
   transform: {
-    '^.+\\.tsx?$': 'ts-jest'
+    '^.+\\.jsx?$': [
+      'babel-jest',
+      {
+        configFile: './test/babel.config.cjs'
+      }
+    ],
+    '^.+\\.tsx?$': [
+      'ts-jest',
+      {
+        configFile: './test/babel.config.cjs'
+      }
+    ]
   },
   transformIgnorePatterns: ['jest-runner'],
   verbose: true

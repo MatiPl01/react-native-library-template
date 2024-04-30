@@ -5,14 +5,14 @@
     "expo": "^50.0.17",
     "expo-status-bar": "1.11.1"
   },
+  "engines": {
+    "node": ">=18"
+  },
   "main": "index.js",
   "private": true,
   "scripts": {
     "android": "expo start --android",
     "ios": "expo start --ios",
     "start": "expo start"
-  },
-  "engines": {
-    "node": ">=18"
   }
 }
