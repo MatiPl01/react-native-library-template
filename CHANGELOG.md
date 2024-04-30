@@ -1,3 +1,16 @@
+# [2.0.0](https://github.com/MatiPl01/react-native-library-template/compare/v1.2.0...v2.0.0) (2024-04-30)
+
+
+### chore
+
+* **deps:** Upgrade React Native to 0.73.6 and yarn to v4 ([#54](https://github.com/MatiPl01/react-native-library-template/issues/54)) ([dc39540](https://github.com/MatiPl01/react-native-library-template/commit/dc39540dd035c1bab1c3c1556436844db3f097f3))
+
+
+### BREAKING CHANGES
+
+* **deps:** - New React Native version,
+- Latest yarn version
+
 # [1.2.0](https://github.com/MatiPl01/react-native-library-template/compare/v1.1.4...v1.2.0) (2024-01-29)
 
 

@@ -7,7 +7,6 @@ const rootDir = path.resolve(__dirname);
 const rootPkg = require(path.join(rootDir, 'package.json'));
 
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
   plugins: [
     [
       'module-resolver',
