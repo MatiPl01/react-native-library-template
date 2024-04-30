@@ -14,6 +14,8 @@ const ignores = [
   'bob.config.cjs',
   'eslint.config.js',
   'README.md',
+  // Test configs
+  'test/**/*',
   // Example app
   'example/**/*',
   '!example/app/**/*'
