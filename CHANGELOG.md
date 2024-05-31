@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/MatiPl01/react-native-library-template/compare/v2.0.0...v2.1.0) (2024-04-30)
+
+
+### Features
+
+* Add useful tips and automatic git repo initialization ([#55](https://github.com/MatiPl01/react-native-library-template/issues/55)) ([138aba6](https://github.com/MatiPl01/react-native-library-template/commit/138aba65370a4eaf4ff624c65e8717ed7f6bb87b))
+
 # [2.0.0](https://github.com/MatiPl01/react-native-library-template/compare/v1.2.0...v2.0.0) (2024-04-30)
 
 
