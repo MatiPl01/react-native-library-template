@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/MatiPl01/react-native-library-template/compare/v2.1.0...v2.1.1) (2024-05-31)
+
+
+### Bug Fixes
+
+* Example commands after setup ([#56](https://github.com/MatiPl01/react-native-library-template/issues/56)) ([b7f7035](https://github.com/MatiPl01/react-native-library-template/commit/b7f70358991dcb1eb81d4dc4f3c0592964c4cb86))
+
 # [2.1.0](https://github.com/MatiPl01/react-native-library-template/compare/v2.0.0...v2.1.0) (2024-04-30)
 
 
