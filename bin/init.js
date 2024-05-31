@@ -80,7 +80,7 @@ const init = (projectName, verbose = false, directory = '.') => {
       '3. Develop your library with react-native CLI (bare example app) or Expo Go (expo example app).'
     );
     logger.info(
-      "4. Don't modify example/bare/ and example/expo/ directories if you don't have to. These apps use shared configuration from the top-level babel config and shared code from the example/app/ directory."
+      '4. Don\'t modify example/bare/ and example/expo/ directories if you don\'t have to. These apps use shared configuration from the top-level babel config and shared code from the example/app/ directory.'
     );
 
     logger.info('\n\n💻 Useful commands:');

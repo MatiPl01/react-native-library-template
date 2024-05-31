@@ -55,10 +55,10 @@
   "license": "MIT",
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
+      "prettier --write --ignore-unknown",
       "eslint --fix",
       "yarn lib:lint:fix",
-      "yarn lib:typecheck",
-      "prettier --write --ignore-unknown"
+      "yarn lib:typecheck"
     ],
     "package.json": [
       "yarn format:deps"
