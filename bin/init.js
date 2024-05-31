@@ -80,20 +80,20 @@ const init = (projectName, verbose = false, directory = '.') => {
       '3. Develop your library with react-native CLI (bare example app) or Expo Go (expo example app).'
     );
     logger.info(
-      "4. Don't modify example/bare/ and example/expo/ directories if you don't have to. These apps use shared configuration from the top-level babel config and shared code from the example/app/ directory."
+      '4. Don\'t modify example/bare/ and example/expo/ directories if you don\'t have to. These apps use shared configuration from the top-level babel config and shared code from the example/app/ directory.'
     );
 
     logger.info('\n\n💻 Useful commands:');
     logger.info('1. Bare example app:');
-    logger.info('   - yarn example:bare:pod - install pods for iOS');
-    logger.info('   - yarn example:bare:start - start the Metro bundler');
-    logger.info('   - yarn example:bare:android - run the Android app');
-    logger.info('   - yarn example:bare:ios - run the iOS app');
+    logger.info('   - yarn example:bare pod - install pods for iOS');
+    logger.info('   - yarn example:bare start - start the Metro bundler');
+    logger.info('   - yarn example:bare android - run the Android app');
+    logger.info('   - yarn example:bare ios - run the iOS app');
 
     logger.info('\n2. Expo example app:');
-    logger.info('   - yarn example:expo:start - start the Expo Go app');
-    logger.info('   - yarn example:expo:android - run the Android app');
-    logger.info('   - yarn example:expo:ios - run the iOS app');
+    logger.info('   - yarn example:expo start - start the Expo Go app');
+    logger.info('   - yarn example:expo android - run the Android app');
+    logger.info('   - yarn example:expo ios - run the iOS app');
 
     logger.info('\n3. Code quality:');
     logger.info('   - yarn lint - check code quality');
