@@ -1,0 +1,9 @@
+# Directories and their contents
+node_modules/**/*
+template/**/*
+.yarn/**/*
+dist/**/*
+# Files
+README.md
+.pnp.cjs
+.pnp.loader.mjs

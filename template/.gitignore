@@ -164,7 +164,6 @@ dist
 
 .pnp.*
 .yarn/*
-!.yarn/patches
 !.yarn/plugins
 !.yarn/releases
 !.yarn/sdks
@@ -176,7 +175,7 @@ dist
 # Finder (MacOS) folder config
 .DS_Store
 
-dist/
+**/dist
 .expo
 *.tgz
 
