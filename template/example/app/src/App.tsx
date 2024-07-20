@@ -1,6 +1,7 @@
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { Greeting } from '{{library-name}}';
 import { StyleSheet } from 'react-native';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+
+import { Greeting } from '{{library-name}}';
 
 export default function App() {
   return (

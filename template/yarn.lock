@@ -8806,7 +8806,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:^8.56.0":
+"eslint@npm:^8.57.0":
   version: 8.57.0
   resolution: "eslint@npm:8.57.0"
   dependencies:
@@ -18377,7 +18377,7 @@ __metadata:
     "@types/eslint": "npm:^8.56.10"
     "@types/jest": "npm:^29.5.12"
     "@types/node": "npm:^20.14.9"
-    eslint: "npm:^8.56.0"
+    eslint: "npm:^8.57.0"
     eslint-config-react-native-matipl01: "npm:2.1.0"
     get-yarn-workspaces: "npm:^1.0.2"
     husky: "npm:^9.0.11"
