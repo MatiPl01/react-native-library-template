@@ -1,4 +1,4 @@
-rootProject.name = 'example'
+rootProject.name = '__library-name__'
 
 def nodeModulesPath = "../../../node_modules"
 

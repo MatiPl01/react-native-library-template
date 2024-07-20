@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "example",
-    "slug": "example",
+    "name": "__library-name__",
+    "slug": "__library-name__",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
