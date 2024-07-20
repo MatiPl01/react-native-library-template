@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "expo": "^51.0.17",
+    "expo-build-properties": "~0.12.3",
     "expo-status-bar": "~1.12.1"
   },
   "engines": {
@@ -11,8 +12,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "start": "expo start"
   }
 }
