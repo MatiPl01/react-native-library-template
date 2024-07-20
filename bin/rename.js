@@ -3,7 +3,7 @@ import path from 'path';
 
 import logger from './logger.js';
 import { readJSON, writeJSON } from './utils.js';
-import { findFiles, findFilesByExtension } from './find.js';
+import { findFilesByName, findFilesByExtension } from './find.js';
 
 const LIB_CAMEL_CASE_NAME = '__libraryName__';
 const LIB_KEBAB_CASE_NAME = '__library-name__';
@@ -24,8 +24,10 @@ const renameLibraryPackageDirectory = (projectPath, projectName, verbose) => {
   }
 };
 
-const renamePackages = (projectPath, projectName, verbose) => {
-  const packagePaths = findFiles(projectPath, 'package.json', ['node_modules']);
+const renameJsonPackages = (projectPath, projectName, verbose) => {
+  const packagePaths = findFilesByName(projectPath, 'package.json', [
+    'node_modules'
+  ]);
 
   if (verbose) {
     logger.info(
@@ -52,41 +54,34 @@ const renamePackages = (projectPath, projectName, verbose) => {
   logger.info('Package names updated successfully.');
 };
 
-const renameTSconfigAlias = (projectPath, projectName, verbose) => {
-  const tsconfigPaths = findFiles(projectPath, 'tsconfig.json', [
+const renameTSconfigs = (projectPath, projectName, verbose) => {
+  const tsconfigPaths = findFilesByName(projectPath, 'tsconfig.json', [
     'node_modules'
   ]);
 
   if (verbose) {
     logger.info(
-      `Found ${tsconfigPaths.length} tsconfig.json files. Setting library name aliases...`
+      `Found ${tsconfigPaths.length} tsconfig.json files. Updating placeholders...`
     );
   }
 
-  const librarySrcPath = path.resolve(
-    projectPath,
-    'packages',
-    projectName,
-    'src'
-  );
-
   tsconfigPaths.forEach(tsconfigPath => {
     const tsconfig = readJSON(tsconfigPath);
-    const tsconfigDir = path.dirname(tsconfigPath);
-    const relativeLibrarySrcPath = path
-      .relative(tsconfigDir, librarySrcPath)
-      .replace(/\\/g, '/');
 
-    if (tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
-      tsconfig.compilerOptions.paths[projectName] = [relativeLibrarySrcPath];
-      writeJSON(tsconfigPath, tsconfig);
-      if (verbose) {
-        logger.info(`Updated ${tsconfigPath}`);
-      }
+    const tsconfigJSONString = JSON.stringify(tsconfig);
+    const updatedTSconfigJSONString = tsconfigJSONString
+      .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName)
+      .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), toCamelCase(projectName));
+    const updatedTSconfig = JSON.parse(updatedTSconfigJSONString);
+
+    writeJSON(tsconfigPath, updatedTSconfig);
+
+    if (verbose) {
+      logger.info(`Updated ${tsconfigPath}`);
     }
   });
 
-  logger.info('Library name aliases were set in tsconfig.json files.');
+  logger.info('Placeholder names were replaced in tsconfig.json files.');
 };
 
 const renamePlaceholdersInExampleApp = (projectPath, projectName, verbose) => {
@@ -122,7 +117,11 @@ const renamePlaceholdersInGithubWorkflows = (
   verbose
 ) => {
   const workflowsPath = path.resolve(projectPath, '.github', 'workflows');
-  const yamlFiles = findFilesByExtension(workflowsPath, ['.yml', '.yaml']);
+  const yamlFiles = findFilesByExtension(
+    workflowsPath,
+    ['.yml', '.yaml'],
+    ['node_modules']
+  );
 
   if (verbose) {
     logger.info(
@@ -153,8 +152,8 @@ const renameExpoApp = (projectPath, projectName, verbose) => {
       logger.info(`Updating app.json in Expo project at ${appJsonPath}`);
     }
     const appJson = readJSON(appJsonPath);
-    appJson.name = toCamelCase(projectName);
-    appJson.slug = projectName;
+    appJson.expo.name = toCamelCase(projectName);
+    appJson.expo.slug = projectName;
     writeJSON(appJsonPath, appJson);
     if (verbose) {
       logger.info('Updated app.json in Expo project');
@@ -169,39 +168,61 @@ const renameExpoApp = (projectPath, projectName, verbose) => {
 const renameBareApp = (projectPath, projectName, verbose) => {
   const iosPath = path.resolve(projectPath, 'example', 'bare', 'ios');
   const androidPath = path.resolve(projectPath, 'example', 'bare', 'android');
+  const appJsonPath = path.resolve(projectPath, 'example', 'bare', 'app.json');
   const camelCaseName = toCamelCase(projectName);
 
-  const replacePlaceholdersInFiles = dirPath => {
-    const files = findFilesByExtension(dirPath, [
-      '.m',
-      '.swift',
-      '.kt',
-      '.java',
-      '.xml',
-      '.gradle'
-    ]);
-    files.forEach(filePath => {
-      const content = fs.readFileSync(filePath, 'utf8');
-      const newContent = content
-        .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
-        .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
-      fs.writeFileSync(filePath, newContent);
-      if (verbose) {
-        logger.info(`Updated file: ${filePath}`);
-      }
-    });
-  };
+  if (fs.existsSync(appJsonPath)) {
+    if (verbose) {
+      logger.info(`Updating app.json in bare project at ${appJsonPath}`);
+    }
+    const appJson = readJSON(appJsonPath);
+    appJson.name = projectName;
+    appJson.displayName = camelCaseName;
+    writeJSON(appJsonPath, appJson);
+    if (verbose) {
+      logger.info('Updated app.json in bare project');
+    }
+  } else {
+    if (verbose) {
+      logger.warn(`app.json not found in bare project at ${appJsonPath}`);
+    }
+  }
 
-  const replacePlaceholdersInFileNames = dirPath => {
-    const files = findFiles(dirPath, null);
-    files.forEach(filePath => {
-      const newFilePath = filePath
-        .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
-        .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
-      if (newFilePath !== filePath) {
-        fs.renameSync(filePath, newFilePath);
-        if (verbose) {
-          logger.info(`Renamed file: ${filePath} to ${newFilePath}`);
+  const replacePlaceholdersInDirectory = dirPath => {
+    const entries = fs.readdirSync(dirPath, { withFileTypes: true });
+
+    entries.forEach(entry => {
+      const entryPath = path.join(dirPath, entry.name);
+      if (entry.isDirectory()) {
+        // First, rename the directory if needed
+        const newDirPath = entryPath
+          .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
+          .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
+
+        if (newDirPath !== entryPath) {
+          fs.renameSync(entryPath, newDirPath);
+          if (verbose) {
+            logger.info(`Renamed directory: ${entryPath} to ${newDirPath}`);
+          }
+        }
+        // Recursively process the directory
+        replacePlaceholdersInDirectory(newDirPath);
+      } else if (entry.isFile()) {
+        const content = fs.readFileSync(entryPath, 'utf8');
+        const newContent = content
+          .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
+          .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
+        fs.writeFileSync(entryPath, newContent);
+
+        const newFilePath = entryPath
+          .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
+          .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
+
+        if (newFilePath !== entryPath) {
+          fs.renameSync(entryPath, newFilePath);
+          if (verbose) {
+            logger.info(`Renamed file: ${entryPath} to ${newFilePath}`);
+          }
         }
       }
     });
@@ -211,10 +232,8 @@ const renameBareApp = (projectPath, projectName, verbose) => {
     logger.info('Renaming placeholders in iOS and Android directories');
   }
 
-  replacePlaceholdersInFiles(iosPath);
-  replacePlaceholdersInFileNames(iosPath);
-  replacePlaceholdersInFiles(androidPath);
-  replacePlaceholdersInFileNames(androidPath);
+  replacePlaceholdersInDirectory(iosPath);
+  replacePlaceholdersInDirectory(androidPath);
 
   if (verbose) {
     logger.info(
@@ -226,8 +245,8 @@ const renameBareApp = (projectPath, projectName, verbose) => {
 export default (projectPath, projectName, verbose) => {
   logger.info('Setting names in template files...');
   renameLibraryPackageDirectory(projectPath, projectName, verbose);
-  renamePackages(projectPath, projectName, verbose);
-  renameTSconfigAlias(projectPath, projectName, verbose);
+  renameJsonPackages(projectPath, projectName, verbose);
+  renameTSconfigs(projectPath, projectName, verbose);
   renamePlaceholdersInExampleApp(projectPath, projectName, verbose);
   renamePlaceholdersInGithubWorkflows(projectPath, projectName, verbose);
   renameExpoApp(projectPath, projectName, verbose);

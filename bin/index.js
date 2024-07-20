@@ -5,6 +5,11 @@ import init from './init.js';
 import logger from './logger.js';
 import { hideBin } from 'yargs/helpers';
 
+function validateProjectName(projectName) {
+  const kebabCaseRegex = /^[a-z]+(-[a-z]+)*$/;
+  return kebabCaseRegex.test(projectName);
+}
+
 yargs(hideBin(process.argv))
   .command(
     'init <projectName>',
@@ -25,7 +30,15 @@ yargs(hideBin(process.argv))
         description: 'Directory to initialize the project in'
       });
     },
-    argv => init(argv.projectName, argv.verbose, argv.directory)
+    argv => {
+      if (!validateProjectName(argv.projectName)) {
+        logger.error(
+          'Invalid project name provided. Project name must be in kebab-case and lowercase.'
+        );
+        process.exit(1);
+      }
+      init(argv.projectName, argv.verbose, argv.directory);
+    }
   )
   .demandCommand(1, 'You need at least one command before moving on')
   .help()
