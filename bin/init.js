@@ -1,25 +1,13 @@
 import path from 'path';
 import degit from 'degit';
-import logger from './logger.js';
-import { readJSON, writeJSON } from './utils.js';
 import { execSync } from 'child_process';
+
+import rename from './rename.js';
+import logger from './logger.js';
 
 const AUTHOR = 'MatiPl01';
 const REPOSITORY = 'react-native-library-template';
 const TEMPLATE_DIR = 'template';
-
-const renamePackage = (projectPath, projectName, verbose) => {
-  if (verbose) {
-    logger.info(`Setting library name to '${projectName}'...`);
-  }
-  const packageJsonPath = path.resolve(projectPath, 'package.json');
-  const packageJson = readJSON(packageJsonPath);
-  packageJson.name = projectName;
-  writeJSON(packageJsonPath, packageJson);
-  if (verbose) {
-    logger.info(`Library name was set to '${projectName}' in package.json`);
-  }
-};
 
 const initGitRepository = (projectPath, verbose) => {
   if (verbose) {
@@ -62,7 +50,7 @@ const init = (projectName, verbose = false, directory = '.') => {
     if (verbose) {
       logger.info('Template files were copied.');
     }
-    renamePackage(projectPath, projectName, verbose);
+    rename(projectPath, projectName, verbose);
     logger.success('Temaplate was successfully cloned!');
     initGitRepository(projectPath, verbose);
     installPackages(projectPath, verbose);
