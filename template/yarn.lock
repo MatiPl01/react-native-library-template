@@ -5900,6 +5900,62 @@ __metadata:
   languageName: node
   linkType: hard
 
+"__library-name__-monorepo@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "__library-name__-monorepo@workspace:."
+  dependencies:
+    "@types/eslint": "npm:^8.56.10"
+    "@types/jest": "npm:^29.5.12"
+    "@types/node": "npm:^20.14.9"
+    eslint: "npm:^8.57.0"
+    eslint-config-react-native-matipl01: "npm:2.1.0"
+    get-yarn-workspaces: "npm:^1.0.2"
+    husky: "npm:^9.0.11"
+    lint-staged: "npm:^15.2.7"
+    prettier: "npm:^3.3.2"
+    syncpack: "npm:^12.3.3"
+    ts-jest: "npm:^29.1.5"
+    ts-node: "npm:^10.9.2"
+    typescript: "npm:5.3.3"
+  languageName: unknown
+  linkType: soft
+
+"__library-name__@workspace:packages/__library-name__":
+  version: 0.0.0-use.local
+  resolution: "__library-name__@workspace:packages/__library-name__"
+  dependencies:
+    "@babel/core": "npm:^7.24.7"
+    "@babel/preset-env": "npm:^7.24.7"
+    "@babel/runtime": "npm:^7.24.7"
+    "@react-native/babel-preset": "npm:^0.74.85"
+    "@react-native/metro-config": "npm:^0.74.85"
+    "@semantic-release/changelog": "npm:^6.0.3"
+    "@semantic-release/commit-analyzer": "npm:^13.0.0"
+    "@semantic-release/git": "npm:^10.0.1"
+    "@semantic-release/github": "npm:^10.0.7"
+    "@semantic-release/npm": "npm:^12.0.1"
+    "@semantic-release/release-notes-generator": "npm:^14.0.1"
+    "@testing-library/react-hooks": "npm:^8.0.1"
+    "@testing-library/react-native": "npm:^12.5.1"
+    "@types/react": "npm:^18.3.3"
+    "@types/react-test-renderer": "npm:^18.3.0"
+    jest: "npm:^29.7.0"
+    jest-expo: "npm:^51.0.3"
+    lint-staged: "npm:^15.2.7"
+    react: "npm:^18.3.1"
+    react-native: "npm:^0.74.3"
+    react-native-builder-bob: "npm:^0.23.2"
+    react-test-renderer: "npm:^18.3.1"
+    semantic-release: "npm:^24.0.0"
+    typescript: "npm:5.3.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+    react-native-gesture-handler: ">=2.0.0"
+    react-native-reanimated: ">=3.0.0"
+  languageName: unknown
+  linkType: soft
+
 "abab@npm:^2.0.6":
   version: 2.0.6
   resolution: "abab@npm:2.0.6"
@@ -18369,59 +18425,3 @@ __metadata:
   checksum: 10c0/85903f7fa96f1c70badee94789fade709f9d83dab2ec92753d612d84fcea6d34c772337a9f8914c6bed2f5fc03a428ac5d893e76fab636da5f1236ab725486d0
   languageName: node
   linkType: hard
-
-"__library-name__-monorepo@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "__library-name__-monorepo@workspace:."
-  dependencies:
-    "@types/eslint": "npm:^8.56.10"
-    "@types/jest": "npm:^29.5.12"
-    "@types/node": "npm:^20.14.9"
-    eslint: "npm:^8.57.0"
-    eslint-config-react-native-matipl01: "npm:2.1.0"
-    get-yarn-workspaces: "npm:^1.0.2"
-    husky: "npm:^9.0.11"
-    lint-staged: "npm:^15.2.7"
-    prettier: "npm:^3.3.2"
-    syncpack: "npm:^12.3.3"
-    ts-jest: "npm:^29.1.5"
-    ts-node: "npm:^10.9.2"
-    typescript: "npm:5.3.3"
-  languageName: unknown
-  linkType: soft
-
-"__library-name__@workspace:packages/__library-name__":
-  version: 0.0.0-use.local
-  resolution: "__library-name__@workspace:packages/__library-name__"
-  dependencies:
-    "@babel/core": "npm:^7.24.7"
-    "@babel/preset-env": "npm:^7.24.7"
-    "@babel/runtime": "npm:^7.24.7"
-    "@react-native/babel-preset": "npm:^0.74.85"
-    "@react-native/metro-config": "npm:^0.74.85"
-    "@semantic-release/changelog": "npm:^6.0.3"
-    "@semantic-release/commit-analyzer": "npm:^13.0.0"
-    "@semantic-release/git": "npm:^10.0.1"
-    "@semantic-release/github": "npm:^10.0.7"
-    "@semantic-release/npm": "npm:^12.0.1"
-    "@semantic-release/release-notes-generator": "npm:^14.0.1"
-    "@testing-library/react-hooks": "npm:^8.0.1"
-    "@testing-library/react-native": "npm:^12.5.1"
-    "@types/react": "npm:^18.3.3"
-    "@types/react-test-renderer": "npm:^18.3.0"
-    jest: "npm:^29.7.0"
-    jest-expo: "npm:^51.0.3"
-    lint-staged: "npm:^15.2.7"
-    react: "npm:^18.3.1"
-    react-native: "npm:^0.74.3"
-    react-native-builder-bob: "npm:^0.23.2"
-    react-test-renderer: "npm:^18.3.1"
-    semantic-release: "npm:^24.0.0"
-    typescript: "npm:5.3.3"
-  peerDependencies:
-    react: "*"
-    react-native: "*"
-    react-native-gesture-handler: ">=2.0.0"
-    react-native-reanimated: ">=3.0.0"
-  languageName: unknown
-  linkType: soft
