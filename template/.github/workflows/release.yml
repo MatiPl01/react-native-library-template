@@ -38,9 +38,11 @@ jobs:
 
       - name: 📦 Install dependencies
         run: yarn install --frozen-lockfile
+        working-directory: packages/{{library-name}}
 
       - name: 🎉 Release
         run: yarn semantic-release
+        working-directory: packages/{{library-name}}
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

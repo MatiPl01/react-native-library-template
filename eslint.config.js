@@ -7,7 +7,6 @@ import prettier from 'eslint-plugin-prettier';
 const ignores = [
   // Directories and their contents
   'node_modules/**/*',
-  'template/**/*',
   '.yarn/**/*',
   'dist/**/*',
   // Files

@@ -3,8 +3,9 @@ import path from 'path';
 
 import logger from './logger.js';
 import { readJSON, writeJSON } from './utils.js';
+import { findFiles, findFilesByExtension } from './find.js';
 
-const LIB_PLACEHOLDER_NAME = '$$library-name$$';
+const LIB_PLACEHOLDER_NAME = '{{library-name}}';
 
 const renameLibraryPackageDirectory = (projectPath, projectName, verbose) => {
   if (verbose) {
@@ -19,73 +20,98 @@ const renameLibraryPackageDirectory = (projectPath, projectName, verbose) => {
 };
 
 const renamePackages = (projectPath, projectName, verbose) => {
-  // Monorepo package.json
-  if (verbose) {
-    logger.info('Setting name in monorepo package.json...');
-  }
-  const monorepoPackagePath = path.resolve(projectPath, 'package.json');
-  const monorepoPackage = readJSON(monorepoPackagePath);
-  writeJSON(monorepoPackagePath, { ...monorepoPackage, name: `${projectName}-monorepo` });
-
-  // Library package.json
-  if (verbose) {
-    logger.info('Setting name in library package.json...');
-  }
-  const libraryPackagePath = path.resolve(projectPath, 'packages', projectName, 'package.json');
-  const libraryPackage = readJSON(libraryPackagePath);
-  writeJSON(libraryPackagePath, { ...libraryPackage, name: projectName });
+  const packagePaths = findFiles(projectPath, 'package.json', ['node_modules']);
 
   if (verbose) {
-    logger.info('Names were set in package.json files');
+    logger.info(`Found ${packagePaths.length} package.json files. Updating package names...`);
   }
+
+  packagePaths.forEach((packagePath) => {
+    const packageJSON = readJSON(packagePath);
+
+    const packageJSONString = JSON.stringify(packageJSON);
+    const updatedPackageJSONString = packageJSONString.replace(new RegExp(LIB_PLACEHOLDER_NAME, 'g'), projectName);
+    const updatedPackageJSON = JSON.parse(updatedPackageJSONString);
+
+    writeJSON(packagePath, updatedPackageJSON);
+
+    if (verbose) {
+      logger.info(`Updated ${packagePath}`);
+    }
+  });
+
+  logger.info('Package names updated successfully.');
+};
+
+const getRelativePath = (from, to) => {
+  return path.relative(from, to).replace(/\\/g, '/');
 };
 
 const renameTSconfigAlias = (projectPath, projectName, verbose) => {
+  const tsconfigPaths = findFiles(projectPath, 'tsconfig.json', ['node_modules']);
+
   if (verbose) {
-    logger.info('Setting library name aliases in tsconfig.json...');
+    logger.info(`Found ${tsconfigPaths.length} tsconfig.json files. Setting library name aliases...`);
   }
-  // projectPath/example/app/tsconfig.json
-  const tsconfigPath = path.resolve(projectPath, 'example', 'app', 'tsconfig.json');
-  const tsconfig = readJSON(tsconfigPath);
-  tsconfig.compilerOptions.paths[projectName] = [`../../packages/${projectName}/src`];
-  writeJSON(tsconfigPath, tsconfig);
-  if (verbose) {
-    logger.info('Library name aliases were set in tsconfig.json');
-  }
+
+  const librarySrcPath = path.resolve(projectPath, 'packages', projectName, 'src');
+
+  tsconfigPaths.forEach((tsconfigPath) => {
+    const tsconfig = readJSON(tsconfigPath);
+    const tsconfigDir = path.dirname(tsconfigPath);
+    const relativeLibrarySrcPath = getRelativePath(tsconfigDir, librarySrcPath);
+
+    if (tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
+      tsconfig.compilerOptions.paths[projectName] = [relativeLibrarySrcPath];
+      writeJSON(tsconfigPath, tsconfig);
+      if (verbose) {
+        logger.info(`Updated ${tsconfigPath}`);
+      }
+    }
+  });
+
+  logger.info('Library name aliases were set in tsconfig.json files.');
 };
 
-const renameImportsInExampleApp = (projectPath, projectName, verbose) => {
-  if (verbose) {
-    logger.info('Setting library imports in example app...');
-  }
-  // go through all .ts,.tsx,.js,.jsx files in example/app/src (directly or nested in other directories) and replace $$library-name$$ with projectName
-  // for each file, read the content, replace, and write back
+const renamePlaceholdersInExampleApp = (projectPath, projectName, verbose) => {
   const exampleAppSrcPath = path.resolve(projectPath, 'example', 'app', 'src');
-  // go through the entire tree of files in exampleAppSrcPath
-  // for each file, read the content, replace, and write back
-  const walk = (dir) => {
-    const files = fs.readdirSync(dir);
-    files.forEach(file => {
-      const filePath = path.resolve(dir, file);
-      const stat = fs.statSync(filePath);
-      if (stat.isDirectory()) {
-        walk(filePath);
-      } else {
-        if (verbose) {
-          logger.info(`Processing file: ${filePath}`);
-        }
-        const content = fs.readFileSync(filePath, 'utf8');
-        const newContent = content.replace(new RegExp(LIB_PLACEHOLDER_NAME, 'g'), projectName);
-        fs.writeFileSync(filePath, newContent);
-      }
-    });
-  };
-  
-  walk(exampleAppSrcPath);
+  const fileExtensions = ['.ts', '.tsx', '.js', '.jsx'];
+  const files = findFilesByExtension(exampleAppSrcPath, fileExtensions, ['node_modules']);
 
   if (verbose) {
-    logger.info('Placeholder names were replaced in example app');
+    logger.info(`Found ${files.length} files to update in example app. Setting library name...`);
   }
+
+  files.forEach((filePath) => {
+    if (verbose) {
+      logger.info(`Processing file: ${filePath}`);
+    }
+    const content = fs.readFileSync(filePath, 'utf8');
+    const newContent = content.replace(new RegExp(LIB_PLACEHOLDER_NAME, 'g'), projectName);
+    fs.writeFileSync(filePath, newContent);
+  });
+
+  logger.info('Placeholder names were replaced in example app.');
+};
+
+const renamePlaceholdersInGithubWorkflows = (projectPath, projectName, verbose) => {
+  const workflowsPath = path.resolve(projectPath, '.github', 'workflows');
+  const yamlFiles = findFilesByExtension(workflowsPath, ['.yml', '.yaml']);
+
+  if (verbose) {
+    logger.info(`Found ${yamlFiles.length} YAML files in .github/workflows. Updating placeholders...`);
+  }
+
+  yamlFiles.forEach((filePath) => {
+    if (verbose) {
+      logger.info(`Processing file: ${filePath}`);
+    }
+    const content = fs.readFileSync(filePath, 'utf8');
+    const newContent = content.replace(new RegExp(LIB_PLACEHOLDER_NAME, 'g'), projectName);
+    fs.writeFileSync(filePath, newContent);
+  });
+
+  logger.info('Placeholder names were replaced in .github/workflows YAML files.');
 };
 
 export default (projectPath, projectName, verbose) => {
@@ -93,5 +119,7 @@ export default (projectPath, projectName, verbose) => {
   renameLibraryPackageDirectory(projectPath, projectName, verbose);
   renamePackages(projectPath, projectName, verbose);
   renameTSconfigAlias(projectPath, projectName, verbose);
-  renameImportsInExampleApp(projectPath, projectName, verbose);
+  renamePlaceholdersInExampleApp(projectPath, projectName, verbose);
+  renamePlaceholdersInGithubWorkflows(projectPath, projectName, verbose);
+  logger.success('All renaming steps completed successfully.');
 };
