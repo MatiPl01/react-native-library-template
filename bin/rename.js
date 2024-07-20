@@ -2,30 +2,38 @@ import fs from 'fs';
 import path from 'path';
 
 import logger from './logger.js';
-import { readJSON, writeJSON } from './utils.js';
-import { findFiles, findFilesByExtension } from './find.js';
+import {
+  toCamelCase,
+  replacePlaceholdersInFile,
+  replacePlaceholdersInDirectory
+} from './utils.js';
+import { findFilesByName, findFilesByExtension } from './find.js';
 
 const LIB_CAMEL_CASE_NAME = '__libraryName__';
 const LIB_KEBAB_CASE_NAME = '__library-name__';
-
-const toCamelCase = str => {
-  return str.replace(/-([a-z])/g, g => g[1].toUpperCase());
-};
 
 const renameLibraryPackageDirectory = (projectPath, projectName, verbose) => {
   if (verbose) {
     logger.info('Setting library directory name...');
   }
+
   const dirPath = path.resolve(projectPath, 'packages', LIB_KEBAB_CASE_NAME);
   const newDirPath = path.resolve(projectPath, 'packages', projectName);
   fs.renameSync(dirPath, newDirPath);
+
   if (verbose) {
     logger.info('Library directory name was set');
   }
 };
 
 const renamePackages = (projectPath, projectName, verbose) => {
-  const packagePaths = findFiles(projectPath, 'package.json', ['node_modules']);
+  const packagePaths = findFilesByName(projectPath, 'package.json', [
+    'node_modules'
+  ]);
+  const replacements = [
+    [LIB_KEBAB_CASE_NAME, projectName],
+    [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
+  ];
 
   if (verbose) {
     logger.info(
@@ -34,59 +42,38 @@ const renamePackages = (projectPath, projectName, verbose) => {
   }
 
   packagePaths.forEach(packagePath => {
-    const packageJSON = readJSON(packagePath);
-
-    const packageJSONString = JSON.stringify(packageJSON);
-    const updatedPackageJSONString = packageJSONString
-      .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName)
-      .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), toCamelCase(projectName));
-    const updatedPackageJSON = JSON.parse(updatedPackageJSONString);
-
-    writeJSON(packagePath, updatedPackageJSON);
-
-    if (verbose) {
-      logger.info(`Updated ${packagePath}`);
-    }
+    replacePlaceholdersInFile(packagePath, replacements, verbose);
   });
 
-  logger.info('Package names updated successfully.');
+  if (verbose) {
+    logger.info('Package names were updated successfully.');
+  }
 };
 
-const renameTSconfigAlias = (projectPath, projectName, verbose) => {
-  const tsconfigPaths = findFiles(projectPath, 'tsconfig.json', [
+const renameTSconfigs = (projectPath, projectName, verbose) => {
+  const tsconfigPaths = findFilesByName(projectPath, 'tsconfig.json', [
     'node_modules'
   ]);
+  const replacements = [
+    [LIB_KEBAB_CASE_NAME, projectName],
+    [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
+  ];
 
   if (verbose) {
     logger.info(
-      `Found ${tsconfigPaths.length} tsconfig.json files. Setting library name aliases...`
+      `Found ${tsconfigPaths.length} tsconfig.json files. Updating placeholders...`
     );
   }
 
-  const librarySrcPath = path.resolve(
-    projectPath,
-    'packages',
-    projectName,
-    'src'
-  );
-
   tsconfigPaths.forEach(tsconfigPath => {
-    const tsconfig = readJSON(tsconfigPath);
-    const tsconfigDir = path.dirname(tsconfigPath);
-    const relativeLibrarySrcPath = path
-      .relative(tsconfigDir, librarySrcPath)
-      .replace(/\\/g, '/');
-
-    if (tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
-      tsconfig.compilerOptions.paths[projectName] = [relativeLibrarySrcPath];
-      writeJSON(tsconfigPath, tsconfig);
-      if (verbose) {
-        logger.info(`Updated ${tsconfigPath}`);
-      }
-    }
+    replacePlaceholdersInFile(tsconfigPath, replacements, verbose);
   });
 
-  logger.info('Library name aliases were set in tsconfig.json files.');
+  if (verbose) {
+    logger.info(
+      'Placeholders in tsconfig.json files were updated successfully.'
+    );
+  }
 };
 
 const renamePlaceholdersInExampleApp = (projectPath, projectName, verbose) => {
@@ -95,6 +82,10 @@ const renamePlaceholdersInExampleApp = (projectPath, projectName, verbose) => {
   const files = findFilesByExtension(exampleAppSrcPath, fileExtensions, [
     'node_modules'
   ]);
+  const replacements = [
+    [LIB_KEBAB_CASE_NAME, projectName],
+    [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
+  ];
 
   if (verbose) {
     logger.info(
@@ -103,17 +94,12 @@ const renamePlaceholdersInExampleApp = (projectPath, projectName, verbose) => {
   }
 
   files.forEach(filePath => {
-    if (verbose) {
-      logger.info(`Processing file: ${filePath}`);
-    }
-    const content = fs.readFileSync(filePath, 'utf8');
-    const newContent = content
-      .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName)
-      .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), toCamelCase(projectName));
-    fs.writeFileSync(filePath, newContent);
+    replacePlaceholdersInFile(filePath, replacements, verbose);
   });
 
-  logger.info('Placeholder names were replaced in example app.');
+  if (verbose) {
+    logger.info('Placeholder names were replaced in example app files.');
+  }
 };
 
 const renamePlaceholdersInGithubWorkflows = (
@@ -122,7 +108,15 @@ const renamePlaceholdersInGithubWorkflows = (
   verbose
 ) => {
   const workflowsPath = path.resolve(projectPath, '.github', 'workflows');
-  const yamlFiles = findFilesByExtension(workflowsPath, ['.yml', '.yaml']);
+  const yamlFiles = findFilesByExtension(
+    workflowsPath,
+    ['.yml', '.yaml'],
+    ['node_modules']
+  );
+  const replacements = [
+    [LIB_KEBAB_CASE_NAME, projectName],
+    [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
+  ];
 
   if (verbose) {
     logger.info(
@@ -131,90 +125,55 @@ const renamePlaceholdersInGithubWorkflows = (
   }
 
   yamlFiles.forEach(filePath => {
-    if (verbose) {
-      logger.info(`Processing file: ${filePath}`);
-    }
-    const content = fs.readFileSync(filePath, 'utf8');
-    const newContent = content
-      .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName)
-      .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), toCamelCase(projectName));
-    fs.writeFileSync(filePath, newContent);
+    replacePlaceholdersInFile(filePath, replacements, verbose);
   });
 
-  logger.info(
-    'Placeholder names were replaced in .github/workflows YAML files.'
-  );
+  if (verbose) {
+    logger.info(
+      'Placeholder names were replaced in .github/workflows YAML files.'
+    );
+  }
 };
 
 const renameExpoApp = (projectPath, projectName, verbose) => {
   const appJsonPath = path.resolve(projectPath, 'example', 'expo', 'app.json');
-  if (fs.existsSync(appJsonPath)) {
-    if (verbose) {
-      logger.info(`Updating app.json in Expo project at ${appJsonPath}`);
-    }
-    const appJson = readJSON(appJsonPath);
-    appJson.name = toCamelCase(projectName);
-    appJson.slug = projectName;
-    writeJSON(appJsonPath, appJson);
-    if (verbose) {
-      logger.info('Updated app.json in Expo project');
-    }
-  } else {
-    if (verbose) {
-      logger.warn(`app.json not found in Expo project at ${appJsonPath}`);
-    }
+  const replacements = [
+    [LIB_KEBAB_CASE_NAME, projectName],
+    [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
+  ];
+
+  if (verbose) {
+    logger.info(`Updating app.json in Expo project at ${appJsonPath}`);
+  }
+
+  replacePlaceholdersInFile(appJsonPath, replacements, verbose);
+
+  if (verbose) {
+    logger.info('Placeholders in app.json were renamed successfully.');
   }
 };
 
 const renameBareApp = (projectPath, projectName, verbose) => {
   const iosPath = path.resolve(projectPath, 'example', 'bare', 'ios');
   const androidPath = path.resolve(projectPath, 'example', 'bare', 'android');
-  const camelCaseName = toCamelCase(projectName);
+  const appJsonPath = path.resolve(projectPath, 'example', 'bare', 'app.json');
+  const replacements = [
+    [LIB_KEBAB_CASE_NAME, projectName],
+    [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
+  ];
 
-  const replacePlaceholdersInFiles = dirPath => {
-    const files = findFilesByExtension(dirPath, [
-      '.m',
-      '.swift',
-      '.kt',
-      '.java',
-      '.xml',
-      '.gradle'
-    ]);
-    files.forEach(filePath => {
-      const content = fs.readFileSync(filePath, 'utf8');
-      const newContent = content
-        .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
-        .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
-      fs.writeFileSync(filePath, newContent);
-      if (verbose) {
-        logger.info(`Updated file: ${filePath}`);
-      }
-    });
-  };
+  if (verbose) {
+    logger.info(`Updating app.json in bare project at ${appJsonPath}`);
+  }
 
-  const replacePlaceholdersInFileNames = dirPath => {
-    const files = findFiles(dirPath, null);
-    files.forEach(filePath => {
-      const newFilePath = filePath
-        .replace(new RegExp(LIB_CAMEL_CASE_NAME, 'g'), camelCaseName)
-        .replace(new RegExp(LIB_KEBAB_CASE_NAME, 'g'), projectName);
-      if (newFilePath !== filePath) {
-        fs.renameSync(filePath, newFilePath);
-        if (verbose) {
-          logger.info(`Renamed file: ${filePath} to ${newFilePath}`);
-        }
-      }
-    });
-  };
+  replacePlaceholdersInFile(appJsonPath, replacements, verbose);
 
   if (verbose) {
     logger.info('Renaming placeholders in iOS and Android directories');
   }
 
-  replacePlaceholdersInFiles(iosPath);
-  replacePlaceholdersInFileNames(iosPath);
-  replacePlaceholdersInFiles(androidPath);
-  replacePlaceholdersInFileNames(androidPath);
+  replacePlaceholdersInDirectory(iosPath, replacements, verbose);
+  replacePlaceholdersInDirectory(androidPath, replacements, verbose);
 
   if (verbose) {
     logger.info(
@@ -227,7 +186,7 @@ export default (projectPath, projectName, verbose) => {
   logger.info('Setting names in template files...');
   renameLibraryPackageDirectory(projectPath, projectName, verbose);
   renamePackages(projectPath, projectName, verbose);
-  renameTSconfigAlias(projectPath, projectName, verbose);
+  renameTSconfigs(projectPath, projectName, verbose);
   renamePlaceholdersInExampleApp(projectPath, projectName, verbose);
   renamePlaceholdersInGithubWorkflows(projectPath, projectName, verbose);
   renameExpoApp(projectPath, projectName, verbose);
