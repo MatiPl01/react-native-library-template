@@ -18370,9 +18370,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"{{library-name}}-monorepo@workspace:.":
+"__library-name__-monorepo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "{{library-name}}-monorepo@workspace:."
+  resolution: "__library-name__-monorepo@workspace:."
   dependencies:
     "@types/eslint": "npm:^8.56.10"
     "@types/jest": "npm:^29.5.12"
@@ -18390,9 +18390,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"{{library-name}}@workspace:packages/{{library-name}}":
+"__library-name__@workspace:packages/__library-name__":
   version: 0.0.0-use.local
-  resolution: "{{library-name}}@workspace:packages/{{library-name}}"
+  resolution: "__library-name__@workspace:packages/__library-name__"
   dependencies:
     "@babel/core": "npm:^7.24.7"
     "@babel/preset-env": "npm:^7.24.7"

@@ -4,7 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "{{library-name}}": ["../../packages/{{library-name}}/src"]
+      "__library-name__": ["../../packages/__library-name__/src"]
     }
   }
 }

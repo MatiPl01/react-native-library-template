@@ -1,5 +1,5 @@
 {
-  "name": "{{library-name}}-monorepo",
+  "name": "__library-name__-monorepo",
   "version": "1.0.0",
   "devDependencies": {
     "@types/eslint": "^8.56.10",
@@ -28,8 +28,8 @@
   "packageManager": "yarn@4.3.1",
   "private": true,
   "scripts": {
-    "build": "yarn workspace {{library-name}} build",
-    "clean": "yarn workspace {{library-name}} clean",
+    "build": "yarn workspace __library-name__ build",
+    "clean": "yarn workspace __library-name__ clean",
     "example:app": "yarn workspace example-app",
     "example:bare": "yarn workspace example-bare",
     "example:expo": "yarn workspace example-expo",
@@ -38,7 +38,7 @@
     "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
     "husky:install": "./scripts/husky.sh",
-    "lib": "yarn workspace {{library-name}}",
+    "lib": "yarn workspace __library-name__",
     "lint": "eslint .",
     "lint:fix": "eslint --fix . ",
     "postinstall": "yarn husky:install",

@@ -1,5 +1,5 @@
 {
-  "name": "{{library-name}}",
+  "name": "__library-name__",
   "version": "1.0.0",
   "devDependencies": {
     "@babel/core": "^7.24.7",

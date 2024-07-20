@@ -45,11 +45,9 @@
     "npm",
     "prettier",
     "react-native",
-    "react-native-cli",
     "setup",
     "template",
     "ts",
-    "typecheck",
     "typescript"
   ],
   "license": "MIT",
