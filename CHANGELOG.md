@@ -1,3 +1,22 @@
+# [3.0.0](https://github.com/MatiPl01/react-native-library-template/compare/v2.1.1...v3.0.0) (2024-07-20)
+
+
+### Bug Fixes
+
+* Add missing semantic release config ([#61](https://github.com/MatiPl01/react-native-library-template/issues/61)) ([645b838](https://github.com/MatiPl01/react-native-library-template/commit/645b838b257e3b1944d547a5b91eadb81c96622b))
+* Library initialization script issues ([#58](https://github.com/MatiPl01/react-native-library-template/issues/58)) ([4cc479d](https://github.com/MatiPl01/react-native-library-template/commit/4cc479dc1cbad72d36a2c67cfd577ba1fb131d68))
+
+
+### Features
+
+* Update docs, include README.md in the library bundle ([#60](https://github.com/MatiPl01/react-native-library-template/issues/60)) ([96962d8](https://github.com/MatiPl01/react-native-library-template/commit/96962d88a7149c3ee002c9a5555207cd9fb2abe7))
+
+
+### BREAKING CHANGES
+
+* CHANGE
+Change monorepo structure for easier development
+
 ## [2.1.1](https://github.com/MatiPl01/react-native-library-template/compare/v2.1.0...v2.1.1) (2024-05-31)
 
 
