@@ -56,7 +56,9 @@
     "build": "yarn clean && bob build",
     "clean": "../../scripts/clean.sh",
     "test": "jest",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "prepack": "cp ../../README.md ./README.md",
+    "postpack": "rm ./README.md"
   },
   "types": "dist/typescript/index.d.ts"
 }
