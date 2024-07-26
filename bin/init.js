@@ -59,7 +59,7 @@ const init = (projectName, verbose = false, directory = '.') => {
 
     logger.info('\n\n💡 A few tips:');
     logger.info(
-      '1. Put your library code in src/ directory. It contains example code that can be removed.'
+      '1. Put your library code in packages/<library-name>/src/ directory. It contains example code that can be removed.'
     );
     logger.info(
       '2. Add usage examples to the example/app/src/ directory. You can also use this example app while developing your library.'
@@ -92,6 +92,9 @@ const init = (projectName, verbose = false, directory = '.') => {
     logger.info('\n4. Publish:');
     logger.info(
       'To publish your library, use the Release Github Action. It will publish your library, automatically detect the version, and create a release on Github.'
+    );
+    logger.info(
+      'Don\'t forget to set up NPM_TOKEN and GH_TOKEN secrets in your repository settings.'
     );
 
     const relativePath = path.relative(currentPath, projectPath);
