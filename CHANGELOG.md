@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/MatiPl01/react-native-library-template/compare/v3.0.0...v3.0.1) (2024-07-26)
+
+
+### Bug Fixes
+
+* Semantic release setup in the monorepo  ([#63](https://github.com/MatiPl01/react-native-library-template/issues/63)) ([f3a0d2a](https://github.com/MatiPl01/react-native-library-template/commit/f3a0d2ab70b0b424db8bfafb5309c0ea73107abb))
+
 # [3.0.0](https://github.com/MatiPl01/react-native-library-template/compare/v2.1.1...v3.0.0) (2024-07-20)
 
 

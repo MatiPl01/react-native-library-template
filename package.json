@@ -1,7 +1,7 @@
 {
   "name": "rn-lib-temp",
   "description": "A usable template for setting up a new React Native library. It's designed to reduce the hassle of configuration and help quickly start the project.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "Mateusz Łopaciński <lop.mateusz.2001@gmail.com>",
   "bin": "./bin/index.js",
   "bugs": "https://github.com/MatiPl01/react-native-library-template/issues",
