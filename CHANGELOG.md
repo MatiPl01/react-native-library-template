@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/MatiPl01/react-native-library-template/compare/v3.1.0...v3.1.1) (2024-11-16)
+
+
+### Bug Fixes
+
+* Installation script crash ([#66](https://github.com/MatiPl01/react-native-library-template/issues/66)) ([957d57e](https://github.com/MatiPl01/react-native-library-template/commit/957d57e44bcc57b2b0449587320786f7eee6d09c))
+
 # [3.1.0](https://github.com/MatiPl01/react-native-library-template/compare/v3.0.1...v3.1.0) (2024-11-16)
 
 
