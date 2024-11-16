@@ -72,16 +72,18 @@ const init = (projectName, verbose = false, directory = '.') => {
     );
 
     logger.info('\n\n💻 Useful commands:');
-    logger.info('1. Bare example app:');
-    logger.info('   - yarn example:bare pod - install pods for iOS');
-    logger.info('   - yarn example:bare start - start the Metro bundler');
-    logger.info('   - yarn example:bare android - run the Android app');
-    logger.info('   - yarn example:bare ios - run the iOS app');
+    logger.info('1. Bare React Native example app:');
+    logger.info('   - cd examples/fabric or cd examples/paper');
+    logger.info('   - yarn pod - install pods for iOS');
+    logger.info('   - yarn start - start the Metro bundler');
+    logger.info('   - yarn android - run the Android app');
+    logger.info('   - yarn ios - run the iOS app');
 
     logger.info('\n2. Expo example app:');
-    logger.info('   - yarn example:expo start - start the Expo Go app');
-    logger.info('   - yarn example:expo android - run the Android app');
-    logger.info('   - yarn example:expo ios - run the iOS app');
+    logger.info('   - cd examples/expo');
+    logger.info('   - yarn start - start the Expo Go app');
+    logger.info('   - yarn android - run the Android app');
+    logger.info('   - yarn ios - run the iOS app');
 
     logger.info('\n3. Code quality:');
     logger.info('   - yarn lint - check code quality');
