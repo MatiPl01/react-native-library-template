@@ -40,10 +40,15 @@ yargs(hideBin(process.argv))
       init(argv.projectName, argv.verbose, argv.directory);
     }
   )
-  .demandCommand(1, 'You need at least one command before moving on')
+  .demandCommand(1, '', 'You need at least one command before moving on')
   .help()
-  .fail(msg => {
-    logger.error(msg);
+  .fail((msg, err, yargsInstance) => {
+    if (!msg && !err) {
+      logger.error('You need at least one command before moving on.');
+      console.log(yargsInstance.help());
+    } else {
+      logger.error(msg || err.message);
+    }
     process.exit(1);
   })
   .strict().argv;

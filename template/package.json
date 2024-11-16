@@ -34,11 +34,11 @@
     "format:check": "prettier --check . --ignore-unknown",
     "format:code": "prettier --write . --ignore-unknown",
     "format:deps": "syncpack format",
-    "husky:install": "./scripts/husky.sh",
+    "husky:init": "./scripts/husky.sh",
     "lib": "yarn workspace __library-name__",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "postinstall": "yarn husky:install",
+    "postinstall": "yarn husky:init",
     "prepare": "husky",
     "test": "yarn lib test && yarn workspace example-app test",
     "typecheck": "yarn lib typecheck && yarn workspace example-app typecheck"
