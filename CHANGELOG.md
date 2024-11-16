@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/MatiPl01/react-native-library-template/compare/v3.1.1...v3.1.2) (2024-11-16)
+
+
+### Bug Fixes
+
+* npm package creation issues and make it lighter ([#67](https://github.com/MatiPl01/react-native-library-template/issues/67)) ([3ec339a](https://github.com/MatiPl01/react-native-library-template/commit/3ec339ab215f5693bc31c4495ec4f3cf4a87c4c7))
+
 ## [3.1.1](https://github.com/MatiPl01/react-native-library-template/compare/v3.1.0...v3.1.1) (2024-11-16)
 
 
