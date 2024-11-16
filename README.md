@@ -29,7 +29,7 @@ Before starting development, go to the directory where you created the template 
 yarn
 ```
 
-**For iOS only**: Install required Pods for the bare React Native example app (`examples/fabric` or `examples/paper`):
+**For iOS only**: Install required Pods for the bare React Native example app (`example/fabric` or `example/paper`):
 
 ```sh
 yarn pod

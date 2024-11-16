@@ -153,17 +153,29 @@ const renameExpoApp = (projectPath, projectName, verbose) => {
   }
 };
 
-const renameBareApp = (projectPath, projectName, verbose) => {
-  const iosPath = path.resolve(projectPath, 'example', 'bare', 'ios');
-  const androidPath = path.resolve(projectPath, 'example', 'bare', 'android');
-  const appJsonPath = path.resolve(projectPath, 'example', 'bare', 'app.json');
+const renameBareApp = (projectPath, projectName, exampleName, verbose) => {
+  const iosPath = path.resolve(projectPath, 'example', exampleName, 'ios');
+  const androidPath = path.resolve(
+    projectPath,
+    'example',
+    exampleName,
+    'android'
+  );
+  const appJsonPath = path.resolve(
+    projectPath,
+    'example',
+    exampleName,
+    'app.json'
+  );
   const replacements = [
     [LIB_KEBAB_CASE_NAME, projectName],
     [LIB_CAMEL_CASE_NAME, toCamelCase(projectName)]
   ];
 
   if (verbose) {
-    logger.info(`Updating app.json in bare project at ${appJsonPath}`);
+    logger.info(
+      `Updating app.json in ${exampleName} project at ${appJsonPath}`
+    );
   }
 
   replacePlaceholdersInFile(appJsonPath, replacements, verbose);
@@ -190,6 +202,7 @@ export default (projectPath, projectName, verbose) => {
   renamePlaceholdersInExampleApp(projectPath, projectName, verbose);
   renamePlaceholdersInGithubWorkflows(projectPath, projectName, verbose);
   renameExpoApp(projectPath, projectName, verbose);
-  renameBareApp(projectPath, projectName, verbose);
+  renameBareApp(projectPath, projectName, 'fabric', verbose);
+  renameBareApp(projectPath, projectName, 'paper', verbose);
   logger.success('All renaming steps completed successfully.');
 };
