@@ -14,7 +14,6 @@
     "@eslint/js": "^9.1.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^13.0.0",
-    "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^10.0.7",
     "@semantic-release/npm": "^12.0.1",
@@ -31,8 +30,6 @@
   },
   "files": [
     "LICENSE",
-    "scripts",
-    "template",
     "bin"
   ],
   "homepage": "https://github.com/MatiPl01/react-native-library-template#readme",
@@ -63,7 +60,6 @@
       "yarn format:deps"
     ]
   },
-  "packageManager": "yarn@4.5.1",
   "publishConfig": {
     "access": "public"
   },
@@ -83,8 +79,8 @@
     "library:install": "cd template && yarn && cd ..",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "postinstall": "yarn library:install",
-    "prepare": "husky"
+    "postinstall": "(yarn library:install || :) >/dev/null 2>&1",
+    "prepare": "(husky install || :) >/dev/null 2>&1"
   },
   "type": "module"
 }
