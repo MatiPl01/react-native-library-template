@@ -201,7 +201,8 @@ export default (projectPath, projectName, verbose) => {
   renameTSconfigs(projectPath, projectName, verbose);
   renamePlaceholdersInExampleApp(projectPath, projectName, verbose);
   renamePlaceholdersInGithubWorkflows(projectPath, projectName, verbose);
-  renameExpoApp(projectPath, projectName, 'fabric', verbose);
+  renameExpoApp(projectPath, projectName, verbose);
+  renameBareApp(projectPath, projectName, 'fabric', verbose);
   renameBareApp(projectPath, projectName, 'paper', verbose);
   logger.success('All renaming steps completed successfully.');
 };
