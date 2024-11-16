@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/MatiPl01/react-native-library-template/compare/v3.0.1...v3.1.0) (2024-11-16)
+
+
+### Features
+
+* Paper example app, scripts refactor ([#65](https://github.com/MatiPl01/react-native-library-template/issues/65)) ([a5749a8](https://github.com/MatiPl01/react-native-library-template/commit/a5749a8412aeb4b46b6d7eb220bce1f09757f904))
+
 ## [3.0.1](https://github.com/MatiPl01/react-native-library-template/compare/v3.0.0...v3.0.1) (2024-07-26)
 
 
