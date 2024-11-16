@@ -29,18 +29,10 @@ Before starting development, go to the directory where you created the template 
 yarn
 ```
 
-**For iOS only**: Install required Pods for the bare React Native example app:
+**For iOS only**: Install required Pods for the bare React Native example app (`examples/fabric` or `examples/paper`):
 
 ```sh
-yarn example:bare pod
-```
-
-### Getting help
-
-For more details about the `npx rn-lib-temp` command use the following command:
-
-```sh
-npx rn-lib-temp help
+yarn pod
 ```
 
 ## 💫 GitHub Actions
@@ -99,13 +91,13 @@ If you don't need to include **expo** or **fabric**/**paper** React Native app e
 For launching the bare React Native example app:
 
 ```sh
-yarn example:bare start|android|ios|pod
+yarn start|android|ios|pod
 ```
 
 For the Expo React Native app:
 
 ```sh
-yarn example:expo start|android|ios
+yarn start|android|ios
 ```
 
 - `start` - starts metro client

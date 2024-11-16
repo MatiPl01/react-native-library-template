@@ -26,3 +26,5 @@ template/js
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+
+*.tgz
