@@ -51,7 +51,7 @@ const init = (projectName, verbose = false, directory = '.') => {
       logger.info('Template files were copied.');
     }
     rename(projectPath, projectName, verbose);
-    logger.success('Temaplate was successfully cloned!');
+    logger.success('Template was successfully cloned!');
     initGitRepository(projectPath, verbose);
     installPackages(projectPath, verbose);
     logger.success('🎉 Project was successfully initialized!');
