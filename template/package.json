@@ -30,9 +30,6 @@
   "scripts": {
     "build": "yarn workspace __library-name__ build",
     "clean": "yarn workspace __library-name__ clean",
-    "example:app": "yarn workspace example-app",
-    "example:bare": "yarn workspace example-bare",
-    "example:expo": "yarn workspace example-expo",
     "format": "yarn format:code && yarn format:deps",
     "format:check": "prettier --check . --ignore-unknown",
     "format:code": "prettier --write . --ignore-unknown",
@@ -40,11 +37,11 @@
     "husky:install": "./scripts/husky.sh",
     "lib": "yarn workspace __library-name__",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix . ",
+    "lint:fix": "eslint --fix .",
     "postinstall": "yarn husky:install",
     "prepare": "husky",
-    "test": "yarn lib test && yarn example:app test",
-    "typecheck": "yarn lib typecheck && yarn example:app typecheck"
+    "test": "yarn lib test && yarn workspace example-app test",
+    "typecheck": "yarn lib typecheck && yarn workspace example-app typecheck"
   },
   "type": "module",
   "workspaces": [

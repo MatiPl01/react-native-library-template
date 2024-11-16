@@ -87,11 +87,12 @@ All dependencies should be installed with `yarn` in order to ensure that yarn wo
 
 The example app is located in the `example` directory. Inside, you'll find three subdirectories:
 
-- `app` - Where the example app source code is located.
-- `bare` - Sources necessary to run the bare react native app.
-- `expo` - Sources of the expo-managed app.
+- `app` - Where the example app source code is located
+- `fabric` - Sources necessary to run the bare React Native app on Fabric (the New Architecture)
+- `paper` - Sources necessary to run the paper React Native app on Paper (the Old Architecture)
+- `expo` - Sources of the expo-managed app
 
-If you don't need to include **expo** or a **bare** React Native app example, you can just remove the corresponding directory.
+If you don't need to include **expo** or **fabric**/**paper** React Native app example, you can just remove the corresponding directory.
 
 #### Useful Commands
 

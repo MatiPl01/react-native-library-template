@@ -7218,20 +7218,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-bare@workspace:example/bare":
-  version: 0.0.0-use.local
-  resolution: "example-bare@workspace:example/bare"
-  dependencies:
-    react-native: "npm:*"
-  languageName: unknown
-  linkType: soft
-
 "example-expo@workspace:example/expo":
   version: 0.0.0-use.local
   resolution: "example-expo@workspace:example/expo"
   dependencies:
     expo: "npm:^52.0.7"
     expo-status-bar: "npm:^2.0.0"
+  languageName: unknown
+  linkType: soft
+
+"example-fabric@workspace:example/fabric":
+  version: 0.0.0-use.local
+  resolution: "example-fabric@workspace:example/fabric"
+  dependencies:
+    react-native: "npm:*"
+  languageName: unknown
+  linkType: soft
+
+"example-paper@workspace:example/paper":
+  version: 0.0.0-use.local
+  resolution: "example-paper@workspace:example/paper"
+  dependencies:
+    react-native: "npm:*"
   languageName: unknown
   linkType: soft
 
