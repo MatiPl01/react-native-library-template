@@ -1,6 +1,7 @@
 {
   "name": "example-app",
   "dependencies": {
+    "__library-name__": "workspace:*",
     "react": "18.3.1",
     "react-native": "0.76.2"
   },

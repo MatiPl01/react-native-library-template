@@ -6,5 +6,6 @@
       "@/*": ["src/*"],
       "__library-name__": ["../../packages/__library-name__/src"]
     }
-  }
+  },
+  "include": ["src", "index.ts", "jest.config.ts", "__tests__"]
 }

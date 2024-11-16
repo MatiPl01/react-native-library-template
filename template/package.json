@@ -44,8 +44,10 @@
     "typecheck": "yarn lib typecheck && yarn workspace example-app typecheck"
   },
   "type": "module",
-  "workspaces": [
-    "example/*",
-    "packages/*"
-  ]
+  "workspaces": {
+    "packages": [
+      "example/*",
+      "packages/*"
+    ]
+  }
 }
