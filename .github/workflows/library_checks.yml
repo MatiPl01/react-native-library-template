@@ -22,10 +22,11 @@ jobs:
           node-version: "lts/*"
           cache: "yarn"
 
-      - name: 🔧 Enable Corepack
+      - name: 🔧 Align Yarn via Corepack
         run: |
           corepack enable
-          corepack use
+          VERSION=$(node -p "require('./package.json').packageManager")
+          corepack prepare "$VERSION" --activate
 
       - name: 📦 Install dependencies
         run: yarn install --immutable
