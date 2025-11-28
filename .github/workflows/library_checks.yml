@@ -25,8 +25,7 @@ jobs:
       - name: 🔧 Align Yarn via Corepack
         run: |
           corepack enable
-          VERSION=$(node -p "require('./package.json').packageManager")
-          corepack prepare "$VERSION" --activate
+          corepack prepare yarn@4.12.0 --activate
 
       - name: 📦 Install dependencies
         run: yarn install --immutable
